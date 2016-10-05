@@ -1,23 +1,26 @@
 <project>
-
+<!-- Tar bort mappen som innehåller gamla jar och klasser från föregående build -->
     <target name="clean">
         <delete dir="build"/>
     </target>
-
+	
+<!-- Skapar mappen build/classes och kompilerar koden i src och lägger klasserna i build/classes -->
     <target name="compile">
         <mkdir dir="build/classes"/>
         <javac srcdir="src" destdir="build/classes"/>
     </target>
 
+<!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
     <target name="jar">
         <mkdir dir="build/jar"/>
         <jar destfile="build/jar/HelloWorld.jar" basedir="build/classes">
+<!--  Skapar en manifest filen som pekar ut Main klassen-->
             <manifest>
                 <attribute name="Main-Class" value="inte.HelloWorld"/>
             </manifest>
         </jar>
     </target>
-
+<!--  Kör jar filen-->
     <target name="run">
         <java jar="build/jar/HelloWorld.jar" fork="true"/>
     </target>
