@@ -11,6 +11,6 @@ Se kommentarer i byggscriptet för att se vad/hur den utför byggprocessen.
 
 --- **Steg för att köra byggscriptet** ---
  - 1. Använd kommandotolken(CMD på engelska) för att navigera till platsen där projektet och byggscriptet ligger. (Scriptet heter build.xml)
- - 2. Kör kommandot "*ant compile jar run*" (Utan citationstecken)
+ - 2. Kör kommandot "*ant clean compile jar run*" (Utan citationstecken)
  - 3. Information om compile/jar/run kommer presenteras i kommandotolken. Även om byggscriptet lyckades och hur lång tid det tog kommer att meddelas
 
