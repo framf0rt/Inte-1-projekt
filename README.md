@@ -17,6 +17,8 @@ Se kommentarer i byggscriptet för att se vad/hur den utför byggprocessen.
 
 --- **Byggserver / Travis CI information** ---
 
+**OBS!** För att skippa en automatisk build inkludera "[skip ci]" eller "[ci skip]" i commit meddelandet!(Utan citationstecken)
+
 En online tjänst som hanterar automatisk byggning av koden vid varje commit. Meddelar även om bygget lyckades eller inte. Det finns en log som innehåller detaljerad information om vad som händer under varje byggning, samma information som ge när du bygger manuellt. 
 
 Url till Travis CI och status indikation finns här: https://github.com/framf0rt/Inte-1-projekt/wiki
