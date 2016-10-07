@@ -1,10 +1,10 @@
-<project>
-<!-- Tar bort mappen som innehåller gamla jar och klasser från föregående build -->
+ï»¿<project>
+<!-- Tar bort mappen som innehÃ¥ller gamla jar och klasser frÃ¥n fÃ¶regÃ¥ende build -->
     <target name="clean">
         <delete dir="build"/>
     </target>
 	
-<!-- Skapar mappen build/classes och kompilerar koden i src och lägger klasserna i build/classes -->
+<!-- Skapar mappen build/classes och kompilerar koden i src och lÃ¤gger klasserna i build/classes -->
     <target name="compile">
         <mkdir dir="build/classes"/>
         <javac srcdir="src" destdir="build/classes"/>
@@ -20,7 +20,7 @@
             </manifest>
         </jar>
     </target>
-<!--  Kör jar filen-->
+<!--  KÃ¶r jar filen-->
     <target name="run">
         <java jar="build/jar/HelloWorld.jar" fork="true"/>
     </target>
