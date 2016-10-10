@@ -1,9 +1,9 @@
 ﻿<project>
 	 
-
-    <path id="classpath">
-        <fileset dir="lib" includes="*.jar"/>
-    </path>
+<classpath>
+      <pathelement path="${classpath}"/>
+      <pathelement location="lib/junit-4.12.jar"/>
+    </classpath>
 	 
 <!-- Tar bort mappen som innehåller gamla jar och klasser från föregående build -->
     <target name="clean">
