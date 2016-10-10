@@ -3,7 +3,7 @@ public class test
 {
 	public test()
 	{
-		//test
+		System.out.println("test");
 		
 	}
 }
