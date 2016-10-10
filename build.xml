@@ -17,7 +17,7 @@
 <!-- Skapar mappen build/classes och kompilerar koden i src och lägger klasserna i build/classes -->
     <target name="compile">
         <mkdir dir="build/classes"/>
-        <javac srcdir="src/inte" destdir="build/classes" classpathref="build.classpath"/>
+        <javac srcdir="src" destdir="build/classes" classpathref="build.classpath"/>
     </target>
 
 <!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
@@ -48,7 +48,7 @@
 
 		
             <batchtest>
-                <fileset dir="build/classes" includes="**/*Test*.class"/>
+                <fileset dir="build/classes" includes="*Test*.class"/>
             </batchtest>
         </junit>
     </target>
