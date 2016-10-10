@@ -16,5 +16,5 @@ public class Hoppas {
 	
 	
 	public void hoppas(){
-		System.out.println("lol");
+		System.out.println("#getrekt");
 }
