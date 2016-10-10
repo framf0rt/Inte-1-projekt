@@ -29,9 +29,12 @@
 	 
 	 <target name="test">
         <junit>
+	
 		
 	<classpath location="lib/junit-4.12.jar" />
 	<classpath location="lib/hamcrest-core-1.3.jar" />
+		
+	<javac srcdir="src/test" destdir="build/classes"/>
 		
             <formatter type="plain" usefile="false" />
             <formatter type="plain" />
