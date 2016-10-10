@@ -1,7 +1,7 @@
 ﻿<project>
 	 
-<classpath>
-      <pathelement path="${classpath}"/>
+ 
+	<classpath>
       <pathelement location="lib/junit-4.12.jar"/>
     </classpath>
 	 
@@ -38,14 +38,14 @@
 
 	
 	 
-  <target name="junit" depends="jar">
+  <target name="test" depends="jar">
         <junit printsummary="yes">
             <classpath>
                 <path refid="classpath"/>
             </classpath>
             
             <batchtest fork="yes">
-                <fileset dir="build/classes" includes="*Test.java"/>
+                <fileset dir="build/classes" includes="HelloWorld_Test.java"/>
             </batchtest>
         </junit>
     </target>
