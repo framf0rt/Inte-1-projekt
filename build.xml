@@ -1,9 +1,10 @@
 ﻿<project>
 	 
 
-	 
+	 <property name="main.build.dir" value="build/classes" />
 	  <property name="lib.dir" location="lib" />
    <path id="build.classpath">
+	   <pathelement location="${main.build.dir}"/>
                 <fileset dir="${lib.dir}">
                         <include name="**/*.jar" />
                 </fileset>
@@ -17,7 +18,7 @@
 <!-- Skapar mappen build/classes och kompilerar koden i src och lägger klasserna i build/classes -->
     <target name="compile">
         <mkdir dir="build/classes"/>
-        <javac srcdir="src" destdir="build/classes" classpathref="build.classpath"/>
+        <javac srcdir="src" destdir="${main.build.dir}" classpathref="build.classpath"/>
     </target>
 
 <!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
@@ -43,6 +44,7 @@
         <junit printsummary="withOutAndErr"  haltonfailure="yes">  
 		<classpath>
 		<path refid="build.classpath" />
+		<pathelement location="${main.build.dir}"/>
 		</classpath>
 
 		
