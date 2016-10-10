@@ -41,7 +41,6 @@
 	 
   <target name="test">
         <junit printsummary="on"  haltonfailure="yes">  
-		<formatter type="plain" usefile="false" />
 		<classpath>
 		<path refid="build.classpath" />
 		</classpath>
@@ -51,6 +50,7 @@
                 <fileset dir="build/classes" includes="HelloWorld_Test.class"/>
 		    <formatter type="plain" usefile="false" />
             </batchtest>
+		<formatter type="plain" usefile="false" />
         </junit>
     </target>
 
