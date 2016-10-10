@@ -46,7 +46,7 @@
 
 		
             <batchtest fork="yes">
-                <fileset dir="src/test" includes="HelloWorld_Test.java"/>
+                <fileset dir="src/test" includes="*.java"/>
             </batchtest>
         </junit>
     </target>
