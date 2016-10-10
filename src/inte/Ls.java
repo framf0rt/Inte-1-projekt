@@ -11,12 +11,12 @@ public class Ls {
 
 	public static void showFiles(File[] files) {
 	    for (File file : files) {
-//	        if (file.isDirectory()) {
-//	            System.out.println("Directory: " + file.getName());
+	        if (file.isDirectory()) {
+	            System.out.println("Directory: " + file.getName());
 //	            showFiles(file.listFiles()); // Calls same method again.
-//	        } else {
+	        } else {
 	    	System.out.println("File: " + file.getName());
-//	        }
+	        }
 	    	//Lägger till testkommentar
 	    }
 	}
