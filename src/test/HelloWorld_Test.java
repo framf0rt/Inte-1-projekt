@@ -11,10 +11,6 @@ public class HelloWorld_Test {
 		assertEquals(1,1);
 	}
 	
-	@Test
-	public void mock_Fail_Test(){ // Lyckas aldrig
-		assertEquals(2,1);
-	}
-	
+
 
 }
