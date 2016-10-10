@@ -1,4 +1,17 @@
 ﻿<project>
+	 
+
+    <property name="lib.dir" location="lib" />
+    <property name="build.dir" value ="build/classes" />
+	 
+    <path id="master-classpath">
+      <fileset dir="lib">
+         <include name="*.jar"/>
+      </fileset>
+      <pathelement path="${build.dir}"/>
+   </path>
+   
+	 
 <!-- Tar bort mappen som innehåller gamla jar och klasser från föregående build -->
     <target name="clean">
         <delete dir="build"/>
@@ -6,8 +19,8 @@
 	
 <!-- Skapar mappen build/classes och kompilerar koden i src och lägger klasserna i build/classes -->
     <target name="compile">
-        <mkdir dir="build/classes"/>
-        <javac srcdir="src/inte" destdir="build/classes"/>
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="src" destdir="${build.dir}" classpathref="master-classpath"/>
     </target>
 
 <!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
@@ -20,9 +33,28 @@
             </manifest>
         </jar>
     </target>
+	 	 
+	 
 <!--  Kör jar filen-->
     <target name="run">
         <java jar="build/jar/HelloWorld.jar" fork="true"/>
+    </target>
+
+	
+	 
+  <target name="test">
+        <junit printsummary="withOutAndErr"  haltonfailure="yes">  
+		<classpath>
+		<path refid="master-classpath" />
+		<pathelement location="build/classes"/>
+		</classpath>
+
+		
+            <batchtest>
+                <fileset dir="${build.dir}" includes="HelloWorld_Test.java"/>
+            </batchtest>
+		<formatter type="plain" usefile="false" />
+        </junit>
     </target>
 
 </project>
