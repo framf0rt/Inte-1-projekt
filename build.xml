@@ -42,7 +42,7 @@
 
 	
 	 
-  <target name="test">
+  <target name="test" depends="compile">
         <junit printsummary="withOutAndErr"  haltonfailure="yes">  
 		<classpath>
 		<path refid="master-classpath" />
