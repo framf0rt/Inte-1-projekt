@@ -17,4 +17,10 @@ public class Hoppas {
 	
 	public void hoppas(){
 		System.out.println("lol");
+	}
+	
+	public void test()
+	{
+		
+	}
 }
