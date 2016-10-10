@@ -1,9 +1,13 @@
 ﻿<project>
 	 
- 
-	<classpath>
-      <pathelement location="lib/junit-4.12.jar"/>
-    </classpath>
+	
+	 
+	  <property name="lib.dir" location="lib" />
+   <path id="build.classpath">
+                <fileset dir="${lib.dir}">
+                        <include name="**/*.jar" />
+                </fileset>
+        </path>
 	 
 <!-- Tar bort mappen som innehåller gamla jar och klasser från föregående build -->
     <target name="clean">
@@ -13,7 +17,7 @@
 <!-- Skapar mappen build/classes och kompilerar koden i src och lägger klasserna i build/classes -->
     <target name="compile">
         <mkdir dir="build/classes"/>
-        <javac srcdir="src" destdir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes" classpathref="build.classpath"/>
     </target>
 
 <!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
@@ -26,10 +30,7 @@
             </manifest>
         </jar>
     </target>
-	 
-<target name="compileTest" depends="compile" description="compile jUnit Test cases ">
-    <javac srcdir="src/test" destdir="build/classes"/>
-</target>	 
+	 	 
 	 
 <!--  Kör jar filen-->
     <target name="run">
