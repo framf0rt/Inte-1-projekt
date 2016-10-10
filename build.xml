@@ -43,6 +43,7 @@
         <junit printsummary="withOutAndErr"  haltonfailure="yes">  
 		<classpath>
 		<path refid="build.classpath" />
+		<pathelement location="build/classes" />
 		</classpath>
 
 		
