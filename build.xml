@@ -40,11 +40,7 @@
 	
 	 
   <target name="test">
-        <junit printsummary="yes">
-            <classpath>
-                <path refid="classpath"/>
-            </classpath>
-            
+        <junit printsummary="yes">     
             <batchtest fork="yes">
                 <fileset dir="build/classes" includes="HelloWorld_Test.java"/>
             </batchtest>
