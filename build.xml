@@ -51,7 +51,7 @@
 
 		
             <batchtest>
-                <fileset dir="${build.dir}">
+                <fileset dir="src">
 			<include name="**/*Test.java"/>
 		</fileset>
             </batchtest>
