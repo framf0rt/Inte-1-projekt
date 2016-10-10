@@ -3,7 +3,7 @@
 	
 	 
 	  <property name="lib.dir" location="lib" />
-	  <property name="test.build.dir" value="build/test"/>
+	  <property name="test.build.dir" value="build/classes"/>
    <path id="build.classpath">
                 <fileset dir="${lib.dir}">
                         <include name="**/*.jar" />
@@ -45,7 +45,7 @@
 		<formatter type="plain" usefile="false" />
 		<classpath>
 		<path refid="build.classpath" />
-		<pathelement location="build/classes"/>
+		<pathelement location="${test.build.dir}"/>
 		</classpath>
 
 		
