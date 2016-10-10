@@ -1,9 +1,8 @@
 ﻿<project>
 	 
-<property name="lib.dir"     value="lib"/>
 
     <path id="classpath">
-        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+        <fileset dir="lib" includes="*.jar"/>
     </path>
 	 
 <!-- Tar bort mappen som innehåller gamla jar och klasser från föregående build -->
