@@ -47,7 +47,7 @@
 
 		
             <batchtest>
-                <fileset dir="src/test" includes="HelloWorld_Test.java"/>
+                <fileset dir="build/classes" includes="HelloWorld_Test.java"/>
             </batchtest>
 		<formatter type="plain" usefile="false" />
         </junit>
