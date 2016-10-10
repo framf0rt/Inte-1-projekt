@@ -48,7 +48,7 @@
 
 		
             <batchtest>
-                <fileset dir="src/test" includes="*.java"/>
+                <fileset dir="build/classes" includes="**/*Test*.class"/>
             </batchtest>
         </junit>
     </target>
