@@ -13,4 +13,8 @@ public class Hoppas {
 	public void hoppas(){
 		System.out.print("Det är ok när man är sjuk");
 	}
+	
+	
+	public void hoppas(){
+		System.out.println("lol");
 }
