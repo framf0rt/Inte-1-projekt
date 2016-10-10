@@ -1,8 +1,6 @@
 ﻿<project>
 	 
-	 <property name="src.dir" location="src" />
-    <property name="build.dir" location="build" />
-    <property name="classes.dir" location="${build.dir}\classes" />
+
 	 
 	  <property name="lib.dir" location="lib" />
    <path id="build.classpath">
@@ -45,7 +43,6 @@
         <junit printsummary="withOutAndErr"  haltonfailure="yes">  
 		<classpath>
 		<path refid="build.classpath" />
-		<pathelement location="${classes.dir}" />
 		</classpath>
 
 		
