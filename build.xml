@@ -41,7 +41,7 @@
 	 
   <target name="test">
         <junit printsummary="on" fork="true" haltonfailure="yes">  
-		
+		<formatter type="plain" usefile="false" />
 		<classpath refid="build.classpath" />
 
 		
