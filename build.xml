@@ -18,7 +18,8 @@
 <!-- Skapar mappen build/classes och kompilerar koden i src och lägger klasserna i build/classes -->
     <target name="compile">
         <mkdir dir="build/classes"/>
-        <javac srcdir="src" destdir="build/classes" classpathref="build.classpath"/>
+        <javac srcdir="src/inte" destdir="build/classes" classpathref="build.classpath"/>
+	 <javac srcdir="src/test" destdir="build/classes" classpathref="build.classpath"/>
     </target>
 
 <!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
@@ -41,7 +42,7 @@
 	
 	 
   <target name="test">
-        <junit printsummary="on" fork="true" haltonfailure="yes">  
+        <junit printsummary="on"  haltonfailure="yes">  
 		<formatter type="plain" usefile="false" />
 		<classpath>
 		<path refid="build.classpath" />
@@ -49,7 +50,7 @@
 		</classpath>
 
 		
-            <batchtest fork="yes">
+            <batchtest fork="no">
                 <fileset dir="src/test" includes="*.java"/>
             </batchtest>
         </junit>
