@@ -3,6 +3,7 @@
 	
 	 
 	  <property name="lib.dir" location="lib" />
+	  <property name="test.build.dir" value="build/test"/>
    <path id="build.classpath">
                 <fileset dir="${lib.dir}">
                         <include name="**/*.jar" />
