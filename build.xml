@@ -39,7 +39,7 @@
 
 	
 	 
-  <target name="test" depends="jar">
+  <target name="test">
         <junit printsummary="yes">
             <classpath>
                 <path refid="classpath"/>
