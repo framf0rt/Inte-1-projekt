@@ -40,7 +40,7 @@
 	
 	 
   <target name="test">
-        <junit printsummary="on"  haltonfailure="yes">  
+        <junit printsummary="withOutAndErr"  haltonfailure="yes">  
 		<classpath>
 		<path refid="build.classpath" />
 		</classpath>
