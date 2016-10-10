@@ -42,7 +42,7 @@
 
 	
 	 
-  <target name="test">
+  <target name="test" depends="compile">
         <junit printsummary="withOutAndErr"  haltonfailure="yes">  
 		<classpath>
 		<path refid="master-classpath" />
@@ -51,9 +51,11 @@
 
 		
             <batchtest>
-                <fileset dir="${build.dir}" includes="HelloWorld_Test.java"/>
+                <fileset dir="src">
+			<include name="**/*Test.java"/>
+		</fileset>
             </batchtest>
-		<formatter type="plain" usefile="false" />
+		<formatter type="brief" usefile="false" />
         </junit>
     </target>
 
