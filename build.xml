@@ -40,7 +40,7 @@
 	
 	 
   <target name="test">
-        <junit printsummary="yes">  
+        <junit printsummary="on" fork="true" haltonfailure="yes">  
 		
 		<classpath refid="build.classpath" />
 
