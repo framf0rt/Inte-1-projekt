@@ -17,4 +17,5 @@ public class Hoppas {
 	
 	public void hoppas(){
 		System.out.println("#getrekt");
+	}
 }
