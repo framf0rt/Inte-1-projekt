@@ -49,6 +49,7 @@
 		
             <batchtest>
                 <fileset dir="build/classes" includes="HelloWorld_Test.class"/>
+		    <formatter type="plain" usefile="false" />
             </batchtest>
         </junit>
     </target>
