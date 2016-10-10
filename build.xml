@@ -23,7 +23,7 @@
         <javac srcdir="src" destdir="${build.dir}" classpathref="master-classpath"/>
     </target>
 
-<!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
+!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
     <target name="jar">
         <mkdir dir="build/jar"/>
         <jar destfile="build/jar/HelloWorld.jar" basedir="build/classes">
@@ -55,7 +55,7 @@
 			<include name="**/*Test.java"/>
 		</fileset>
             </batchtest>
-		<formatter type="plain" usefile="false" />
+		<formatter type="brief" usefile="false" />
         </junit>
     </target>
 
