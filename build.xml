@@ -1,9 +1,10 @@
 ﻿<project>
 	 
-	 	
-	<classpath location="lib/junit-4.12.jar" />
-	<classpath location="lib/hamcrest-core-1.3.jar" />
-		
+<property name="lib.dir"     value="lib"/>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
 	 
 <!-- Tar bort mappen som innehåller gamla jar och klasser från föregående build -->
     <target name="clean">
@@ -13,7 +14,7 @@
 <!-- Skapar mappen build/classes och kompilerar koden i src och lägger klasserna i build/classes -->
     <target name="compile">
         <mkdir dir="build/classes"/>
-        <javac srcdir="src/inte" destdir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes"/>
     </target>
 
 <!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
@@ -35,16 +36,17 @@
     <target name="run">
         <java jar="build/jar/HelloWorld.jar" fork="true"/>
     </target>
+
+	
 	 
-	 <target name="test">
-        <junit>
-	
-	
-		
-            <formatter type="plain" usefile="false" />
-            <formatter type="plain" />
-            <batchtest>
-                <fileset dir="build/classes" includes="*Test*.class" />
+  <target name="junit" depends="jar">
+        <junit printsummary="yes">
+            <classpath>
+                <path refid="classpath"/>
+            </classpath>
+            
+            <batchtest fork="yes">
+                <fileset dir="build/classes" includes="*Test.java"/>
             </batchtest>
         </junit>
     </target>
