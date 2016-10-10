@@ -42,7 +42,10 @@
   <target name="test">
         <junit printsummary="on" fork="true" haltonfailure="yes">  
 		<formatter type="plain" usefile="false" />
-		<classpath refid="build.classpath" />
+		<classpath>
+		<path refid="build.classpath" />
+		<pathelement location="build/classes"/>
+		</classpath>
 
 		
             <batchtest fork="yes">
