@@ -15,7 +15,7 @@
 <!-- Skapar mappen build/classes och kompilerar koden i src och lägger klasserna i build/classes -->
     <target name="compile">
         <mkdir dir="${build.dir}"/>
-        <javac srcdir="src" destdir="${build.dir}" classpathref="master-classpath" includeaantruntime="false"/>
+        <javac srcdir="src" destdir="${build.dir}" classpathref="master-classpath" includeantruntime="false"/>
     </target>
 
 <!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
