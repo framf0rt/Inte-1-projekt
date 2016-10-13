@@ -29,9 +29,7 @@ public class Cd_Test {
 	public void cd_GoToDirectory_short_Test(){ 
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		String currentDirectoryString = currentDirectory.getAbsolutePath();
-		
-		
-		cd.cdDirectoryUpwards(); 
+		cd.cdDirectoryUpwards(); // Måste ta ett steg upp för att säkerställa att Travis har en mapp under
 		String target = currentDirectory.getName();	
 		String current = cd.cdDirectoryShortChangePath(target);
 		assertEquals(currentDirectoryString,current);

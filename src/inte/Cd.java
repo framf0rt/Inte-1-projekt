@@ -19,8 +19,7 @@ public class Cd {
 
 	}
 
-	public String cdDirectoryChangePath(String path) { // Bör även ge feedback
-														// til användaren
+	public String cdDirectoryChangePath(String path) { // Bör även ge feedback													// til användaren
 		File target = new File(path);
 		if (target.isDirectory() == true) {
 			currentDirectory = target;
@@ -33,7 +32,7 @@ public class Cd {
 
 	public String cdDirectoryShortChangePath(String path) { // Bör även ge feedback til användaren
 		String currentPath = currentDirectory.getAbsolutePath();
-		String filePath = currentPath + "/" + path;
+		String filePath = currentPath + "/" + path; // Forwardslash istället för backslash för att fungerar i Travis (Linux)
 		File target = new File(filePath);
 		if (target.isDirectory() == true) {
 			currentDirectory = target;
