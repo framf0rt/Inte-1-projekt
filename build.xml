@@ -24,7 +24,7 @@
         <jar destfile="build/jar/HelloWorld.jar" basedir="${build.dir}"  excludes="**/*Test.class">
 <!--  Skapar en manifest filen som pekar ut Main klassen-->
             <manifest>
-                <attribute name="Main-Class" value="inte.HelloWorld"/>
+                <attribute name="Main-Class" value="inte.Ls"/>
             </manifest>
         </jar>
     </target>
