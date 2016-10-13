@@ -9,7 +9,7 @@ public class cd_Test {
 	
 	@Test
 	public void cdDirectoryUpwards(){
-		assertEquals(1,1);
+		assertEquals(2,2);
 	}
 	
 
