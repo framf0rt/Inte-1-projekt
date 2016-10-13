@@ -25,13 +25,9 @@ public class Cd {
 		File target = new File(path);
 		if(target.isDirectory() == true){
 			currentDirectory = target;
-			System.out.println(currentDirectory.isDirectory());
-			System.out.println(currentDirectory.isFile());
 			currentDirectoryString = currentDirectory.getAbsolutePath();
-			System.out.println(currentDirectory.toString());
 			return currentDirectoryString;
 		}
-		
 		throw new FolderDoesntExistsException("Wrong path");
 		//return currentDirectory.toString();
 	}
