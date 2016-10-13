@@ -28,7 +28,7 @@ public class Cd_Test {
 	@Test
 	public void cd_GoToDirectory_short_Test(){
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
-		String target ="inte";
+		String target ="src";
 		String current = cd.cdDirectoryShortChangePath(target);
 		assertEquals(currentDirectory+"\\"+target,current);
 	}
