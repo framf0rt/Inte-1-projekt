@@ -38,7 +38,7 @@ public class Ls_Test {
 		test.add("Directory: inte");
 		test.add("Directory: test");
 		
-		LsOutputTest outputTest = new LsOutputTest();
+		LsOutputTemp outputTest = new LsOutputTemp();
 		
 		outputTest.showFiles(new File(testObject.getCurrentDirectory()).listFiles());
 		assertEquals(test, outputTest.showFilesOutput);

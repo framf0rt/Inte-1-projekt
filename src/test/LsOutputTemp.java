@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import inte.Ls;
 
-public class LsOutputTest extends Ls{
+public class LsOutputTemp extends Ls{
 	
 	public ArrayList<String> showFilesOutput = new ArrayList<>();
 	
