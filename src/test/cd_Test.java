@@ -27,7 +27,8 @@ public class cd_Test {
 	
 	@Test
 	public void cdDirectoryChangePath_DirectoryTrue_Test(){
-		String target ="D:\\Inte_Projekt";
+		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
+		String target = currentDirectory.getParentFile().getAbsolutePath();
 		String current = cd.cdDirectoryChangePath(target);
 		assertEquals(target, current);
 		
@@ -41,6 +42,7 @@ public class cd_Test {
 	
 	@Test (expected=FolderDoesntExistsException.class)
 	public void cdDirectoryChangePath_IsFile_Test(){
+		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		String target ="D:\\Inte_Projekt\\README.md";
 		cd.cdDirectoryChangePath(target);
 		
