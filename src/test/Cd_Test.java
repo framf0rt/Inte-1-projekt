@@ -32,6 +32,8 @@ public class Cd_Test {
 		String target = currentDirectory.getName();	
 		cd.cdDirectoryUpwards(); // Måste gå upp ett steg i mappstrukturen för att säkerställa att testet fungerar i Travis
 		String current = cd.cdDirectoryShortChangePath(target);
+		System.out.println(current);
+		System.out.println(currentDirectoryString);
 		assertEquals(currentDirectoryString,current);
 	}
 	
