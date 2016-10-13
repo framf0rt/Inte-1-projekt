@@ -39,7 +39,6 @@
 	
 	 
   <target name="test" depends="compile">
-	<mkdir dir="src/emptyPackage"/>
         <junit printsummary="on"  haltonfailure="yes">  
 		<classpath>
 		<path refid="master-classpath" />
