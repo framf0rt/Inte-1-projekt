@@ -27,7 +27,7 @@ public class Ls_Test {
 	public void ls_Test(){
 		ArrayList<String> test = new ArrayList<>();
 		Ls testLs = new Ls();
-		test.add("Directory: hej");
+		test.add("Directory: inte");
 		test.add("Directory: test");
 		assertEquals(test, testLs.testarray);
 	}
