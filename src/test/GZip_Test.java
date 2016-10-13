@@ -21,6 +21,9 @@ public class GZip_Test {
 		file.createNewFile();
 		File gZFile = gz.gZipFile(file);
 		System.out.println(gZFile.getAbsolutePath());
+		file.delete();
+		System.out.println(file.exists());
+		
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
