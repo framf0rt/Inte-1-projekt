@@ -6,9 +6,16 @@ import inte.*;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Ls_Test {
+	private Ls testObject;
+	
+	@Before
+	public void beforeTest(){
+		testObject = new Ls();
+	}
 	
 	
 	@Test
@@ -16,20 +23,24 @@ public class Ls_Test {
 		assertEquals(1,1);
 	}
 	
-	@Test
-	public void return1_Test(){
-		Ls ls = new Ls();
-		
 	
+	@Test
+	public void getDirectoryTest(){
+		
+		assertEquals(getClass().getClassLoader().getResource("").getPath(), testObject.getCurrentDirectory());
 	}
 	
+	
 	@Test
-	public void ls_Test(){
+	public void showFilesTest(){
 		ArrayList<String> test = new ArrayList<>();
-		Ls testLs = new Ls();
 		test.add("Directory: inte");
 		test.add("Directory: test");
-		assertEquals(test, testLs.testarray);
+		
+		LsOutputTemp outputTest = new LsOutputTemp();
+		
+		outputTest.showFiles(new File(testObject.getCurrentDirectory()).listFiles());
+		assertEquals(test, outputTest.showFilesOutput);
 	}
 
 
