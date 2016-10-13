@@ -1,28 +1,57 @@
 ﻿<project>
-<!-- Tar bort mappen som innehåller gamla jar och klasser från föregående build -->
-    <target name="clean">
-        <delete dir="build"/>
-    </target>
+	 
+
+    <property name="lib.dir" location="lib" />
+    <property name="build.dir" value ="build/classes" />
+	 
+    <path id="master-classpath">
+      <fileset dir="lib">
+         <include name="*.jar"/>
+      </fileset>
+      <pathelement path="${build.dir}"/>
+   </path>
+   
 	
 <!-- Skapar mappen build/classes och kompilerar koden i src och lägger klasserna i build/classes -->
     <target name="compile">
-        <mkdir dir="build/classes"/>
-        <javac srcdir="src/inte" destdir="build/classes"/>
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="src" destdir="${build.dir}" classpathref="master-classpath" includeantruntime="false"/>
     </target>
 
 <!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
-    <target name="jar">
+    <target name="jar" depends="compile">
         <mkdir dir="build/jar"/>
-        <jar destfile="build/jar/HelloWorld.jar" basedir="build/classes">
+        <jar destfile="build/jar/HelloWorld.jar" basedir="${build.dir}"  excludes="**/*Test.class">
 <!--  Skapar en manifest filen som pekar ut Main klassen-->
             <manifest>
                 <attribute name="Main-Class" value="inte.HelloWorld"/>
             </manifest>
         </jar>
     </target>
+	 	 
+	 
 <!--  Kör jar filen-->
-    <target name="run">
+    <target name="run" depends="jar">
         <java jar="build/jar/HelloWorld.jar" fork="true"/>
+    </target>
+
+	
+	 
+  <target name="test" depends="compile">
+        <junit printsummary="on"  haltonfailure="yes">  
+		<classpath>
+		<path refid="master-classpath" />
+		<pathelement location="${build.dir}"/>
+		</classpath>
+
+		
+            <batchtest>
+                <fileset dir="src">
+			<include name="**/*Test.java"/>
+		</fileset>
+            </batchtest>
+		<formatter type="brief" usefile="false" />
+        </junit>
     </target>
 
 </project>

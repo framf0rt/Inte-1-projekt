@@ -1,6 +1,9 @@
 package test;
 
 import org.junit.*;
+
+import inte.HelloWorld;
+
 import static org.junit.Assert.assertEquals;
 
 public class HelloWorld_Test {
@@ -12,9 +15,11 @@ public class HelloWorld_Test {
 	}
 	
 	@Test
-	public void mock_Fail_Test(){ // Lyckas aldrig
-		assertEquals(2,1);
-	}
+	public void return1_Test(){
+		HelloWorld hello = new HelloWorld();
+		assertEquals(hello.return1(),1);
 	
+	}
+
 
 }
