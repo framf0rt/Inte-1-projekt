@@ -3,14 +3,49 @@ package test;
 import inte.*;
 
 import static org.junit.Assert.assertEquals;
+
+import java.io.File;
+
 import org.junit.*;
 
 public class cd_Test {
 	
-	@Test
-	public void cdDirectoryUpwards(){
-		assertEquals(2,2);
+	private Cd cd = new Cd();
+	
+	@Before
+	public void cdSet(){
+		cd = new Cd();
 	}
 	
+	@Test
+	public void cdDirectoryUpwards_Test(){
+		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
+		String currentDirectoryString = cd.cdDirectoryUpwards();
+		String fileParent = currentDirectory.getParentFile().getAbsolutePath();
+		assertEquals(fileParent, currentDirectoryString);
+	}
+	
+	@Test
+	public void cdDirectoryChangePath_DirectoryTrue_Test(){
+		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
+		String target = currentDirectory.getParentFile().getAbsolutePath();
+		String current = cd.cdDirectoryChangePath(target);
+		assertEquals(target, current);
+		
+	}
+	
+	@Test (expected=FolderDoesntExistsException.class)
+	public void cdDirectoryChangePath_DirectoryFalse_Test(){
+		String target ="D:\\Inte_Pro";
+		cd.cdDirectoryChangePath(target);
+	}
+	
+	@Test (expected=FolderDoesntExistsException.class)
+	public void cdDirectoryChangePath_IsFile_Test(){
+		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
+		String target ="D:\\Inte_Projekt\\README.md";
+		cd.cdDirectoryChangePath(target);
+		
+	}
 
 }
