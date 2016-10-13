@@ -1,4 +1,5 @@
-﻿<project>
+
+<project>
 	 
 
     <property name="lib.dir" location="lib" />
@@ -21,10 +22,10 @@
 <!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
     <target name="jar" depends="compile">
         <mkdir dir="build/jar"/>
-        <jar destfile="build/jar/Ls.jar" basedir="${build.dir}"  excludes="**/*Test.class">
+        <jar destfile="build/jar/CommandPrompt.jar" basedir="${build.dir}"  excludes="**/*Test.class">
 <!--  Skapar en manifest filen som pekar ut Main klassen-->
             <manifest>
-                <attribute name="Main-Class" value="inte.Ls"/>
+                <attribute name="Main-Class" value="inte.CommandPrompt"/>
             </manifest>
         </jar>
     </target>
@@ -32,7 +33,7 @@
 	 
 <!--  Kör jar filen-->
     <target name="run" depends="jar">
-        <java jar="build/jar/Ls.jar" fork="true"/>
+        <java jar="build/jar/CommandPrompt.jar" fork="true"/>
     </target>
 
 	

@@ -5,34 +5,87 @@ import java.util.ArrayList;
 
 public class Ls {
 	
-	private File[] files;
-	public ArrayList<String> testarray = new ArrayList<String>();
+	private String currentDirectory;
 	
 	public Ls(){
-		files = new File(getClass().getClassLoader().getResource("").getPath()).listFiles();
-		showFiles(files);
-		
+		currentDirectory = getClass().getClassLoader().getResource("").getPath();
 		
 	}
-	 
-	public static void main(String[] args) { 
-		//new Ls();
-	}
-
 	
-	public void showFiles(File[] files) { 
+	public void printFilenames(){
 		
+	}
+	
+	public String getCurrentDirectory(){
+		return currentDirectory;
+	}
+	
+	public void showFiles(File[] files){
 		for (File file : files) { 
 			if (file.isDirectory()) { 
-				testarray.add("Directory: " + file.getName()); 
-
-
-//	   showFiles(file.listFiles()); // Calls same method again. 
+				System.out.println("Directory: " + file.getName()); 
 
 			}else{ 
-				testarray.add("File: " + file.getName());
+				System.out.println("File: " + file.getName());
 			} 
-		} 	 
-	} 
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	private File[] files;
+//	public ArrayList<String> testarray = new ArrayList<String>();
+//	
+//	public Ls(){
+//		files = new File(getClass().getClassLoader().getResource("").getPath()).listFiles();
+//		showFiles(files);
+//		
+//		
+//	}
+	 
+	 
+		//new Ls();
+	
+
+	
+//	public void showFiles(File[] files) { 
+//		
+//		for (File file : files) { 
+//			if (file.isDirectory()) { 
+//				testarray.add("Directory: " + file.getName()); 
+//
+//
+////	   showFiles(file.listFiles()); // Calls same method again. 
+//
+//			}else{ 
+//				testarray.add("File: " + file.getName());
+//			} 
+//		} 	 
+//	} 
 	
 }
