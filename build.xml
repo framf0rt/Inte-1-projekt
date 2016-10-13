@@ -1,4 +1,5 @@
-﻿<project>
+
+<project>
 	 
 
     <property name="lib.dir" location="lib" />
@@ -38,6 +39,7 @@
 	
 	 
   <target name="test" depends="compile">
+	<mkdir dir="src/emptyPackage"/>
         <junit printsummary="on"  haltonfailure="yes">  
 		<classpath>
 		<path refid="master-classpath" />
