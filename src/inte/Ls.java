@@ -15,8 +15,8 @@ public class Ls {
 		
 	}
 	 
-	public static void main(String... args) { 
-		new Ls();
+	public static void main(String[] args) { 
+		//new Ls();
 	}
 
 	
