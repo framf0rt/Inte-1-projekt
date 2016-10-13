@@ -26,9 +26,11 @@ public class Cd_Test {
 	}
 	
 	@Test
-	public void cd_GoToDirectory_short_Test(){
+	public void cd_GoToDirectory_short_Test(){ // Fungerar ej på travis
+		
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
-		String target ="src";
+		System.out.println(currentDirectory.getAbsolutePath());
+		String target = "inte";
 		String current = cd.cdDirectoryShortChangePath(target);
 		assertEquals(currentDirectory+"\\"+target,current);
 	}
