@@ -33,16 +33,15 @@ public class Cd {
 
 	public String cdDirectoryShortChangePath(String path) { // Bör även ge feedback til användaren
 		String currentPath = currentDirectory.getAbsolutePath();
-		System.out.println(currentPath);
-		String filePath = currentPath + "\\" + path;
+		String filePath = currentPath + "/" + path;
 		File target = new File(filePath);
 		if (target.isDirectory() == true) {
 			currentDirectory = target;
 			currentDirectoryString = currentDirectory.getAbsolutePath();
 			return currentDirectoryString;
 		}
-		//throw new FolderDoesntExistsException("Wrong path"); // Kastas om directory in existerar
-		 return currentDirectory.toString();
+		throw new FolderDoesntExistsException("Wrong path"); // Kastas om directory in existerar
+		// return currentDirectory.toString();
 	}
 
 }
