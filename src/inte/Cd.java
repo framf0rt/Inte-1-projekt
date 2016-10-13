@@ -40,8 +40,8 @@ public class Cd {
 			currentDirectoryString = currentDirectory.getAbsolutePath();
 			return currentDirectoryString;
 		}
-		throw new FolderDoesntExistsException("Wrong path"); // Kastas om directory in existerar
-		// return currentDirectory.toString();
+		//throw new FolderDoesntExistsException("Wrong path"); // Kastas om directory in existerar
+		 return currentDirectory.toString();
 	}
 
 }

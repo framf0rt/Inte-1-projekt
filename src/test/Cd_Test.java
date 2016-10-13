@@ -25,15 +25,15 @@ public class Cd_Test {
 		assertEquals(fileParent, currentDirectoryString);
 	}
 	
-//	@Test  // Fungerar ej på travis i detta läge!
-//	public void cd_GoToDirectory_short_Test(){ 
-//		
-//		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
-//		System.out.println(currentDirectory.getAbsolutePath());
-//		String target = "inte";
-//		String current = cd.cdDirectoryShortChangePath(target);
-//		assertEquals(currentDirectory+"\\"+target,current);
-//	}
+	@Test
+	public void cd_GoToDirectory_short_Test(){ 
+		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
+		String currentDirectoryString = currentDirectory.getAbsolutePath();
+		String target = currentDirectory.getName();	
+		cd.cdDirectoryUpwards(); // Måste gå upp ett steg i mappstrukturen för att säkerställa att testet fungerar i Travis
+		String current = cd.cdDirectoryShortChangePath(target);
+		assertEquals(currentDirectoryString,current);
+	}
 	
 	@Test
 	public void cdDirectoryChangePath_DirectoryTrue_Test(){
