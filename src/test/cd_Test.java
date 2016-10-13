@@ -8,7 +8,7 @@ import java.io.File;
 
 import org.junit.*;
 
-public class cd_Test {
+public class Cd_Test {
 	
 	private Cd cd = new Cd();
 	
@@ -23,6 +23,14 @@ public class cd_Test {
 		String currentDirectoryString = cd.cdDirectoryUpwards();
 		String fileParent = currentDirectory.getParentFile().getAbsolutePath();
 		assertEquals(fileParent, currentDirectoryString);
+	}
+	
+	@Test
+	public void cd_GoToDirectory_short_Test(){
+		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
+		String target ="inte";
+		String current = cd.cdDirectoryShortChangePath(target);
+		assertEquals(currentDirectory+"\\"+target,current);
 	}
 	
 	@Test
