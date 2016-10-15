@@ -7,7 +7,7 @@ public class RealFile extends File {
 		super(name);
 		dir = new java.io.File(absolutePath);
 		if(!dir.isFile()){
-			dir.getna
+			dir.getName();
 		}
 		
 	}
