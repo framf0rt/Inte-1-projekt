@@ -25,14 +25,9 @@ public class GZip_Test {
 		System.out.println(file.exists());
 		
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-//	File[] files = currentDirectory.listFiles();
-//	for(File f : files){
-//		System.out.println(f.getAbsolutePath());
-//	}
-//	System.out.println(currentDirectory);
+
 
 	}
 
