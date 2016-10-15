@@ -34,6 +34,7 @@ public class Ls_Test {
 	@Test
 	public void showFilesTest(){
 		ArrayList<String> test = new ArrayList<>();
+		test.add("Directory: TestaInte");
 		test.add("Directory: inte");
 		test.add("Directory: test");
 		
