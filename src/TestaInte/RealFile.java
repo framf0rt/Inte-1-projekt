@@ -2,19 +2,32 @@ package TestaInte;
 
 public class RealFile extends File {
 	
-	private java.io.File dir;
+	private java.io.File file;
 	public RealFile(String name, String absolutePath){
 		super(name);
-		dir = new java.io.File(absolutePath);
-		if(!dir.isFile()){
-			dir.getName();
+		if(absolutePath == null){
+			throw new IllegalFilePathException("Path can't be null");
 		}
+		file = new java.io.File(absolutePath);
+		if(!file.isFile()){
+			throw new IllegalFilePathException("it's not a file");
+		}
+		setName(file.getName());
 		
 	}
+	
+	public RealFile(String path){
+		this("", path);
+	}
 	@Override
-	public int getSize() {
+	public long getSize() {
 		// TODO Auto-generated method stub
-		return (int)dir.length();
+		return file.length();
+	}
+
+	@Override
+	public boolean isDirectory() {
+		return file.isDirectory();
 	}
 	
 	

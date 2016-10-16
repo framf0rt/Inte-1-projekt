@@ -1,6 +1,7 @@
 package test;
 
 import org.junit.*;
+import TestaInte.*;
 
 import inte.*;
 
@@ -34,13 +35,22 @@ public class Ls_Test {
 	@Test
 	public void showFilesTest(){
 		ArrayList<String> test = new ArrayList<>();
-		test.add("Directory: TestaInte");
-		test.add("Directory: inte");
-		test.add("Directory: test");
+		test.add("Directory: Directory1");
+		test.add("File: File1");
+		test.add("File: File2");
 		
 		LsOutputTemp outputTest = new LsOutputTemp();
 		
-		outputTest.showFiles(new File(testObject.getCurrentDirectory()).listFiles());
+		outputTest.showContent(new SmallDirectory("TestName"));
+		assertEquals(test, outputTest.showFilesOutput);
+	}
+	
+	@Test
+	public void showEmpty(){
+		ArrayList<String> test = new ArrayList<>();
+		test.add("Directory is empty");
+		LsOutputTemp outputTest = new LsOutputTemp();
+		outputTest.showContent(new EmptyDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
 
