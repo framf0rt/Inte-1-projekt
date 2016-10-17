@@ -1,14 +1,22 @@
 package test;
 
 import org.junit.*;
+import TestaInte.*;
 
 import inte.*;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Ls_Test {
+	private Ls testObject;
+	
+	@Before
+	public void beforeTest(){
+		testObject = new Ls();
+	}
 	
 	
 	@Test
@@ -16,20 +24,34 @@ public class Ls_Test {
 		assertEquals(1,1);
 	}
 	
-	@Test
-	public void return1_Test(){
-		Ls ls = new Ls();
-		
 	
+	@Test
+	public void getDirectoryTest(){
+		
+		assertEquals(getClass().getClassLoader().getResource("").getPath(), testObject.getCurrentDirectory());
+	}
+	
+	
+	@Test
+	public void showFilesTest(){
+		ArrayList<String> test = new ArrayList<>();
+		test.add("Directory: Directory1");
+		test.add("File: File1");
+		test.add("File: File2");
+		
+		LsOutputTemp outputTest = new LsOutputTemp();
+		
+		outputTest.showContent(new SmallDirectory("TestName"));
+		assertEquals(test, outputTest.showFilesOutput);
 	}
 	
 	@Test
-	public void ls_Test(){
+	public void showEmpty(){
 		ArrayList<String> test = new ArrayList<>();
-		Ls testLs = new Ls();
-		test.add("Directory: inte");
-		test.add("Directory: test");
-		assertEquals(test, testLs.testarray);
+		test.add("Directory is empty");
+		LsOutputTemp outputTest = new LsOutputTemp();
+		outputTest.showContent(new EmptyDirectory("TestName"));
+		assertEquals(test, outputTest.showFilesOutput);
 	}
 
 
