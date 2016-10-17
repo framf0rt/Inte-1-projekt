@@ -1,2 +1,4 @@
 language: java
-script: ant clean compile jar compileTest run test
+script: ant compile jar run test
+notifications:
+  email: false
