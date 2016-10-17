@@ -49,7 +49,7 @@
             <batchtest>
                 <fileset dir="src">
 			<include name="**/*Test.java"/>
-			<exclude name="**/*RealTest.java"/>
+			<exclude name="**/*RealFileTest.java, **/*RealDirectoryTest.java"/>
 		</fileset>
             </batchtest>
 		<formatter type="brief" usefile="false" />
