@@ -33,7 +33,7 @@ public class GZip {
 				gzos.finish();
 				gzos.close();
 
-				System.out.println("Done");
+			
 
 			} catch (IOException ex) {
 				ex.printStackTrace();
