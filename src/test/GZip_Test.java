@@ -13,9 +13,12 @@ public class GZip_Test {
 	@Test
 	public void gZip_MakeGzFileWithSameName_Test() {
 		GZip gz = new GZip();
-
-		File gzFile = gz.gZipFile(new File("C:\\Users\\Anders\\Documents\\GitHub\\Inte-1-projekt\\FileforGZip.txt"));
-		
+		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
+		File parentPath = currentDirectory.getParentFile();
+		String filePath = parentPath.getAbsolutePath();
+		System.out.println(filePath);
+		File gzFile = gz.gZipFile(new File(filePath + "/FileforGZip.txt"));
+	
 		assertTrue(gzFile.exists());
 
 		gzFile.delete();
