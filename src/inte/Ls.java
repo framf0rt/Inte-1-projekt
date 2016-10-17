@@ -4,6 +4,8 @@ import java.io.File;
 import TestaInte.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Ls {
 	
@@ -18,38 +20,63 @@ public class Ls {
 //		
 //	}
 	
-	public void showDirectory(FSO dir){
-		System.out.println("Directory: " + dir.getName());
+	protected void showDirectory(FSO dir, boolean showSize){
+		if(showSize){
+			System.out.println("Directory: " + dir.getName() + "Size: " + dir.getSize());
+		}else{
+			System.out.println("Directory: " + dir.getName());
+		}
+		
 		
 	}
-	public void showFile(FSO file){
-		System.out.println("File: " + file.getName());
-		
+	protected void showFile(FSO file, boolean showSize){
+		if(showSize){
+			System.out.println("File: " + file.getName() + "Size: " + file.getSize());
+		}else{
+			System.out.println("File: " + file.getName());
+		}
 	}
 	public String getCurrentDirectory(){
 		return currentDirectory;
 	}
 	
-	public final void showContent(Directory dir){
+	public final void showContent(Directory dir, boolean showSize, boolean sortSize){
 		if(dir.getContent().length == 0){
 			showEmptyDirectory();
 		}
-		for (FSO fso : dir.getContent()) { 
+		for (FSO fso : ((sortSize)?sortContent(dir):dir.getContent())) { 
 			if (fso.isDirectory()) { 
-				 showDirectory(fso);
+				 showDirectory(fso, showSize);
 
 			}else{ 
-				showFile(fso);
+				showFile(fso, showSize);
 			} 
 		}
 		
 	}
+	public FSO[] sortContent(Directory dir){
+		FSO[] temp = dir.getContent();
+		Arrays.sort(temp);
+//		for(FSO tmp: temp){
+//			System.out.println(tmp.getSize());
+//		}
+		return temp;
+	}
+	public void showContentSize(Directory dir){
+		showContent(dir, true, false);
+		
+	}
+	public void showContentWithoutSize(Directory dir){
+		showContent(dir, false, false);
+	}
 
-	public void showEmptyDirectory() {
+	protected void showEmptyDirectory() {
 		System.out.println("Directory is empty");
 		
 	}
-	
+	public void showContentSortedSize(Directory dir){
+		showContent(dir, true, true);
+	}
 	
 	
 	

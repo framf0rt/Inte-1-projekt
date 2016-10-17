@@ -21,8 +21,7 @@ public class EmptyDirectory extends Directory {
 
 	@Override
 	public long getSize() {
-		// TODO Auto-generated method stub
-		return 1;
+		return 0;
 	}
 
 }
