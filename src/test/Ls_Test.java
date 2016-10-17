@@ -41,7 +41,7 @@ public class Ls_Test {
 		
 		LsOutputTemp outputTest = new LsOutputTemp();
 		
-		outputTest.showContent(new SmallDirectory("TestName"));
+		outputTest.showContentWithoutSize(new SmallDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
 	
@@ -50,7 +50,30 @@ public class Ls_Test {
 		ArrayList<String> test = new ArrayList<>();
 		test.add("Directory is empty");
 		LsOutputTemp outputTest = new LsOutputTemp();
-		outputTest.showContent(new EmptyDirectory("TestName"));
+		outputTest.showContentWithoutSize(new EmptyDirectory("TestName"));
+		assertEquals(test, outputTest.showFilesOutput);
+	}
+	@Test
+	public void showFilesSizeTest(){
+		ArrayList<String> test = new ArrayList<>();
+		test.add("Directory: Directory1 Size: 0");
+		test.add("File: File1 Size: 50");
+		test.add("File: File2 Size: 100");
+		
+		LsOutputTemp outputTest = new LsOutputTemp();
+		
+		outputTest.showContentSize(new SmallDirectory("TestName"));
+		assertEquals(test, outputTest.showFilesOutput);
+	}
+	
+	@Test
+	public void showFilesSortedTest(){
+		ArrayList<String> test = new ArrayList<>();
+		test.add("Directory: Directory1 Size: 0");
+		test.add("File: File2 Size: 100");
+		test.add("File: File1 Size: 50");
+		LsOutputTemp outputTest = new LsOutputTemp();
+		outputTest.showContentSortedSize(new SmallDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
 

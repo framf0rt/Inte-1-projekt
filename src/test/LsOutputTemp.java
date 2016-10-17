@@ -3,6 +3,7 @@ package test;
 import java.io.File;
 import java.util.ArrayList;
 
+import TestaInte.Directory;
 import TestaInte.FSO;
 import inte.Ls;
 
@@ -23,18 +24,25 @@ public class LsOutputTemp extends Ls{
 //		
 //	}
 	@Override
-	public void showDirectory(FSO dir){
-		showFilesOutput.add("Directory: " + dir.getName());
-		
+	protected void showDirectory(FSO dir, boolean showSize){
+		if(showSize){
+			showFilesOutput.add("Directory: " + dir.getName() + " Size: " + dir.getSize());
+		}else{
+			showFilesOutput.add("Directory: " + dir.getName());
+		}
 	}
 	@Override
-	public void showFile(FSO file){
-		showFilesOutput.add("File: " + file.getName());
-		
+	protected void showFile(FSO file, boolean showSize){
+		if(showSize){
+			showFilesOutput.add("File: " + file.getName() + " Size: " + file.getSize());
+		}else{
+			showFilesOutput.add("File: " + file.getName());
+		}
 	}
+
 	
 	@Override
-	public void showEmptyDirectory(){
+	protected void showEmptyDirectory(){
 		showFilesOutput.add("Directory is empty");
 	}
 }
