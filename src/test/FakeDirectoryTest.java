@@ -12,7 +12,7 @@ public class FakeDirectoryTest {
 	@Test
 	public void getFakeSizeTest(){
 		SmallDirectory sd = new SmallDirectory("small");
-		assertEquals(200, sd.getSize());
+		assertEquals(150, sd.getSize());
 	}
 
 }
