@@ -1,6 +1,8 @@
 package inte;
 
 import java.io.File;
+import TestaInte.*;
+
 import java.util.ArrayList;
 
 public class Ls {
@@ -12,23 +14,39 @@ public class Ls {
 		
 	}
 	
-	public void printFilenames(){
+//	public void printFilenames(){
+//		
+//	}
+	
+	public void showDirectory(FSO dir){
+		System.out.println("Directory: " + dir.getName());
 		
 	}
-	
+	public void showFile(FSO file){
+		System.out.println("File: " + file.getName());
+		
+	}
 	public String getCurrentDirectory(){
 		return currentDirectory;
 	}
 	
-	public void showFiles(File[] files){
-		for (File file : files) { 
-			if (file.isDirectory()) { 
-				System.out.println("Directory: " + file.getName()); 
+	public final void showContent(Directory dir){
+		if(dir.getContent().length == 0){
+			showEmptyDirectory();
+		}
+		for (FSO fso : dir.getContent()) { 
+			if (fso.isDirectory()) { 
+				 showDirectory(fso);
 
 			}else{ 
-				System.out.println("File: " + file.getName());
+				showFile(fso);
 			} 
 		}
+		
+	}
+
+	public void showEmptyDirectory() {
+		System.out.println("Directory is empty");
 		
 	}
 	
