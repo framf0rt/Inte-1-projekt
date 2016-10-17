@@ -1,11 +1,16 @@
 package inte;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.zip.GZIPOutputStream;
 
 public class GZip {
 
 	public File gZipFile(File file) {
+		byte[] buffer = new byte[1024];
+		String filePath = file.getPath();
 
 		if (file.exists() == true) {
 			String pathFile = file.getParent();
@@ -13,12 +18,27 @@ public class GZip {
 			String[] strings = fileName.split("[.]");
 			String fileNameWithoutFiletype = strings[0];
 			File fileGZ = new File(pathFile, fileNameWithoutFiletype + ".gz");
+
 			try {
-				fileGZ.createNewFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+
+				GZIPOutputStream gzos = new GZIPOutputStream(new FileOutputStream(fileGZ));
+				FileInputStream in = new FileInputStream(filePath);
+
+				int len;
+				while ((len = in.read(buffer)) > 0) {
+					gzos.write(buffer, 0, len);
+				}
+
+				in.close();
+				gzos.finish();
+				gzos.close();
+
+				System.out.println("Done");
+
+			} catch (IOException ex) {
+				ex.printStackTrace();
 			}
+			
 			return fileGZ;
 
 		} else {
@@ -28,6 +48,7 @@ public class GZip {
 																		// inte
 																		// existerar
 		}
+		
 	}
 
 	public File gZipFileToPath(File file, String path) {
@@ -72,10 +93,18 @@ public class GZip {
 				return fileGZ;
 
 			} else {
-				throw new FileDoesntExistsException("File or Path doesn't exist"); // Kastas om filen inte existerar
+				throw new FileDoesntExistsException("File or Path doesn't exist"); // Kastas
+																					// om
+																					// filen
+																					// inte
+																					// existerar
 			}
 		} else {
-			throw new FileNameInvalidException("File name is invalid"); // Kastas om filnamnet är felaktigt
+			throw new FileNameInvalidException("File name is invalid"); // Kastas
+																		// om
+																		// filnamnet
+																		// är
+																		// felaktigt
 		}
 
 	}
