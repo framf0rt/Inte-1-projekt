@@ -30,5 +30,12 @@ public class RealFile extends File {
 	}
 	
 	
+	public boolean isFile(){
+		return file.isFile();
+	}
+	public java.io.File getFile(){
+		return file;
+	}
+	
 
 }
