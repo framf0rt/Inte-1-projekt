@@ -7,7 +7,7 @@ public class SmallDirectory extends Directory {
 		
 	}
 
-	private static final FSO[] content = {new SmallDirectory("Directory1"), new FakeFile("File1"), new FakeFile("File2")};
+	private static final FSO[] content = {new EmptyDirectory("Directory1"), new FakeFile("File1",50), new FakeFile("File2", 100)};
 	
 	@Override
 	public FSO[] getContent() {
@@ -21,7 +21,18 @@ public class SmallDirectory extends Directory {
 
 	@Override
 	public long getSize() {
-		return 201;
+		long totalSize = 0;
+		for(int i = 0; i < content.length; i++){
+			if(content[i].isDirectory()){
+				for(FSO fso : ((Directory)content[i]).getContent()){
+					totalSize+=fso.getSize();
+				}
+				
+			}else{
+				totalSize += content[i].getSize();
+			}
+		}
+		return totalSize;
 	}
 
 }
