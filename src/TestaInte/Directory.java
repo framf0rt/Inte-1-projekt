@@ -6,6 +6,7 @@ public abstract class Directory extends FSO{
 		super(name);
 	}
 
-	public abstract FSO[] listContent();
+	public abstract FSO[] getContent();
+	
 	
 }

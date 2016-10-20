@@ -6,6 +6,6 @@ public abstract class File extends FSO {
 		super(name);
 	}
 
-	public abstract int getSize();
+	//public abstract long getSize();
 	
 }
