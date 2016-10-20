@@ -21,7 +21,6 @@ public class RealFile extends File {
 	}
 	@Override
 	public long getSize() {
-		// TODO Auto-generated method stub
 		return file.length();
 	}
 
