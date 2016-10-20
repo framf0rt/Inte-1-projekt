@@ -3,26 +3,39 @@ package inte;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 
 public class CopyFile {
 	
-	
-	
-	public void copyFile(File file){
-		File parentFile = file.getParentFile();
-		String parentPath = parentFile.getPath();
-		System.out.println(parentPath);
+	int i = 0;
+	public void copyFile(File file, String dir){
 		String[] fileTypeSplit = file.getName().split("[.]");
 		String[] strings = file.getName().split("_Copy_");
 		
 		
 		String name = strings[0];
-		String s = file.getName(); //+ "_Copy_1";
+		String s = file.getName(); 
 		File f = new File(file,s);
+
+	
+	
+		NameFileFilter filter = new NameFileFilter(fileTypeSplit[0]);
+		File dirFile = new File(dir);
+		filter.accept(dirFile,fileTypeSplit[0]);
+		for(int j =0;j< dirFile.listFiles(filter).length;j++)
+		{
+			i++;
+	
+		}
+		System.out.println(i);
 		if(strings.length == 1){
 			try {
-				f = new File(parentPath + "/",name +"_Copy_1" + "."+fileTypeSplit[1]);
+				if(i>0)
+				f = new File(dirFile + "/",fileTypeSplit[0] +"_Copy_" + i + "."+fileTypeSplit[1]);
+				else
+					f = new File(dirFile + "/",fileTypeSplit[0] + "."+fileTypeSplit[1]);
+
 				FileInputStream fis = new FileInputStream(file);
 				byte[] buffer = new byte[1024];
 				FileOutputStream fos = new FileOutputStream(f);
@@ -37,26 +50,9 @@ public class CopyFile {
 				
 				fos.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		else if(strings[1]!=null)
-		{
-			int i = Integer.parseInt(strings[1]);
-			i++;
-			System.out.println(i);
-			f = new File(parentPath + "/",name +"_Copy_" + i);
-			try {
-				f.createNewFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	
-		System.out.println(f.getName());
-		
 	}
 	
 	public void copyFileNewPath(File file, String path){

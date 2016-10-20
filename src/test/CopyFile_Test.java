@@ -11,8 +11,9 @@ public class CopyFile_Test {
 	public void copyFile_Test(){
 		CopyFile cf = new CopyFile();
 		File current = new File(getClass().getClassLoader().getResource("").getPath());
-		File file = new File("C:\\Users\\Anders\\Documents\\GitHub\\Inte-1-projekt\\README.md");
-		cf.copyFile(file);
+		File file = new File("C:\\Users\\Miguel\\Documents\\test\\test.txt");
+		//cf.copyFile(file,file.getParentFile().getAbsolutePath());
+		cf.copyFile(file,"C:\\Users\\Miguel\\Documents\\test2\\");
 		//assertTrue(file.exists());
 		
 	}
