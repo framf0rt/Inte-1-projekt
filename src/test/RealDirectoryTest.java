@@ -27,14 +27,12 @@ public class RealDirectoryTest {
 		RealDirectory rl = new RealDirectory(getClass().getClassLoader().getResource("").getPath());
 		FSO[] FSOContents = rl.getContent();
 		java.io.File[] contents = new java.io.File(getClass().getClassLoader().getResource("").getPath()).listFiles();
-		if(FSOContents.length == contents.length){
-			for(int i = 0; i < FSOContents.length; i++){
-				assertEquals(FSOContents[i].getName(), contents[i].getName());
-			}
-			
-		}else{
-			fail("Content arrays don't have the same length");
+		assertEquals(FSOContents.length, contents.length);
+		for(int i = 0; i < FSOContents.length; i++){
+			assertEquals(FSOContents[i].getName(), contents[i].getName());
 		}
+		
+		
 		
 	}
 	
@@ -44,5 +42,7 @@ public class RealDirectoryTest {
 		java.io.File javadirectory = new java.io.File(getClass().getClassLoader().getResource("").getPath());
 		assertEquals(rd.getSize(), javadirectory.length());
 	}
+	
+
 
 }
