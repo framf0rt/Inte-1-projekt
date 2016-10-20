@@ -1,11 +1,16 @@
 package inte;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.zip.GZIPOutputStream;
 
 public class GZip {
 
 	public File gZipFile(File file) {
+		byte[] buffer = new byte[1024];
+		String filePath = file.getPath();
 
 		if (file.exists() == true) {
 			String pathFile = file.getParent();
@@ -13,12 +18,25 @@ public class GZip {
 			String[] strings = fileName.split("[.]");
 			String fileNameWithoutFiletype = strings[0];
 			File fileGZ = new File(pathFile, fileNameWithoutFiletype + ".gz");
+
 			try {
-				fileGZ.createNewFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+
+				GZIPOutputStream gzos = new GZIPOutputStream(new FileOutputStream(fileGZ));
+				FileInputStream in = new FileInputStream(filePath);
+
+				int len;
+				while ((len = in.read(buffer)) > 0) {
+					gzos.write(buffer, 0, len);
+				}
+
+				in.close();
+				gzos.finish();
+				gzos.close();
+
+			} catch (IOException ex) {
+				ex.printStackTrace();
 			}
+
 			return fileGZ;
 
 		} else {
@@ -28,10 +46,12 @@ public class GZip {
 																		// inte
 																		// existerar
 		}
+
 	}
 
 	public File gZipFileToPath(File file, String path) {
 		File pathCheck = new File(path);
+		byte[] buffer = new byte[1024];
 
 		if (file.exists() == true && pathCheck.isDirectory() == true) {
 			String fileName = file.getName();
@@ -40,7 +60,19 @@ public class GZip {
 			File newFilePath = new File(path);
 			File fileGZ = new File(newFilePath, fileNameWithoutFiletype + ".gz");
 			try {
-				fileGZ.createNewFile();
+
+				GZIPOutputStream gzos = new GZIPOutputStream(new FileOutputStream(fileGZ));
+				FileInputStream in = new FileInputStream(path);
+
+				int len;
+				while ((len = in.read(buffer)) > 0) {
+					gzos.write(buffer, 0, len);
+				}
+
+				in.close();
+				gzos.finish();
+				gzos.close();
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -58,13 +90,27 @@ public class GZip {
 	}
 
 	public File gZipFileToPathNewName(File file, String path, String name) {
+		byte[] buffer = new byte[1024];
+
 		File pathCheck = new File(path);
 		if (name != null && name != "" && name != "." && !name.contains("/") && !name.contains("\\")) {
 			if (file.exists() == true && pathCheck.isDirectory() == true) {
 				File newFilePath = new File(path);
 				File fileGZ = new File(newFilePath, name + ".gz");
 				try {
-					fileGZ.createNewFile();
+
+					GZIPOutputStream gzos = new GZIPOutputStream(new FileOutputStream(fileGZ));
+					FileInputStream in = new FileInputStream(path);
+
+					int len;
+					while ((len = in.read(buffer)) > 0) {
+						gzos.write(buffer, 0, len);
+					}
+
+					in.close();
+					gzos.finish();
+					gzos.close();
+
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -72,10 +118,18 @@ public class GZip {
 				return fileGZ;
 
 			} else {
-				throw new FileDoesntExistsException("File or Path doesn't exist"); // Kastas om filen inte existerar
+				throw new FileDoesntExistsException("File or Path doesn't exist"); // Kastas
+																					// om
+																					// filen
+																					// inte
+																					// existerar
 			}
 		} else {
-			throw new FileNameInvalidException("File name is invalid"); // Kastas om filnamnet är felaktigt
+			throw new FileNameInvalidException("File name is invalid"); // Kastas
+																		// om
+																		// filnamnet
+																		// är
+																		// felaktigt
 		}
 
 	}

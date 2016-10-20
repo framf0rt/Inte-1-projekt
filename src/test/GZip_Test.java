@@ -15,29 +15,22 @@ public class GZip_Test {
 	@Test
 	public void gZip_MakeGzFileWithSameName_Test() {
 		GZip gz = new GZip();
-		File file = new File("test.txt");
-
-
-		try {
-			file.createNewFile();
-			File gzFile = gz.gZipFile(file);
-			assertTrue(file.exists());
-			assertTrue(gzFile.exists());
-			file.delete(); // Delete av filer för att undvika problem med andra
-							// tester
-			gzFile.delete();
-			assertFalse(file.exists());
-			assertFalse(gzFile.exists());
-
-		} catch (IOException e) {
-			e.printStackTrace();
+		File path = new File(getClass().getClassLoader().getResource("").getPath());
+		
+		while( !path.getName().equals("Inte-1-projekt") && path.getParent() != null){
+			path = path.getParentFile();
 		}
+		assertFalse(path.getParent() == null);
+		File gzFile = gz.gZipFile(new File(path.getAbsolutePath() + "/FileforGZip.txt"));
+	
+		assertTrue(gzFile.exists());
+		gzFile.delete();
 
 	}
 
 	@Test(expected = FileDoesntExistsException.class)
 	public void gZip_FileDoesntExist_Test() {
-		File file = new File("test.txt");
+		File file = new File("1.txt");
 		GZip gz = new GZip();
 		file.delete();
 		gz.gZipFile(file);
@@ -47,29 +40,28 @@ public class GZip_Test {
 
 	@Test
 	public void gZip_MakeGzFileSameNameNewPath_Test() {
-		GZip gz = new GZip();
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
-		File file = new File(currentDirectory, "NO" + ".txt");
-
-		try {
-			file.createNewFile();
-			File parentFile = file.getParentFile();
-			File gzFile = gz.gZipFileToPath(file, parentFile.getAbsolutePath()); 													// PATH!!!
-			assertTrue(file.exists());
-			assertTrue(gzFile.exists());
-			file.delete();
-			gzFile.delete();
-			assertFalse(file.exists());
-			assertFalse(gzFile.exists());
-
-		} catch (IOException e) {
-			e.printStackTrace();
+		File parent = currentDirectory.getParentFile();
+	
+		
+		GZip gz = new GZip();
+		File path = new File(getClass().getClassLoader().getResource("").getPath());
+		
+		while( !path.getName().equals("Inte-1-projekt") && path.getParent() != null){
+			path = path.getParentFile();
 		}
+		assertFalse(path.getParent() == null);
+		File gzFile = gz.gZipFileToPath(new File(path.getAbsolutePath() + "/FileforGZip.txt"), parent.getAbsolutePath());
+	
+		assertTrue(gzFile.exists());
+		gzFile.delete();
+		//assertFalse(gzFile.exists());
+
 	}
 
 	@Test(expected = FileDoesntExistsException.class)
 	public void gZipNewPath_FileDoesntExist_Test() {
-		File file = new File("test.txt");
+		File file = new File("2.txt");
 		GZip gz = new GZip();
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		file.delete();
@@ -79,70 +71,53 @@ public class GZip_Test {
 
 	@Test(expected = FileDoesntExistsException.class)
 	public void gZipNewPath_PathDoesntExist_Test() {
-		File file = new File("test.txt");
+		File file = new File("3.txt");
 		GZip gz = new GZip();
-		try {
-			file.createNewFile();
-			assertTrue(file.exists());
 			gz.gZipFileToPath(file, "C:/tassdffasd/");
 			file.delete();
 			assertFalse(file.exists());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 
 	}
 	
 	@Test
 	public void gZip_MakeGzFileNewPathNewName_Test(){
-		GZip gz = new GZip();
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
-		File file = new File(currentDirectory, "NO" + ".txt");
-		String targetFileName = "YES";
+		File parent = currentDirectory.getParentFile();
 		
-		try {
-			file.createNewFile();
-			File parentFile = file.getParentFile();
-			assertTrue(file.exists());
-			File gzFile = gz.gZipFileToPathNewName(file, parentFile.getAbsolutePath(), targetFileName);
-			assertEquals(gzFile.getName(), targetFileName + ".gz"); // See that the file has right name
-			File gzParentFile = gzFile.getParentFile();
-			assertEquals(gzParentFile.getAbsolutePath(), parentFile.getAbsolutePath()); // See that the file has right path
-			assertTrue(gzFile.exists()); // See that the file exist
-			gzFile.delete();
-			file.delete();
-			assertFalse(gzFile.exists()); // See that the file is removed after test
-			assertFalse(file.exists());
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		
+		GZip gz = new GZip();
+		File path = new File(getClass().getClassLoader().getResource("").getPath());
+		
+		while( !path.getName().equals("Inte-1-projekt") && path.getParent() != null){
+			path = path.getParentFile();
 		}
+		assertFalse(path.getParent() == null);
+		File gzFile = gz.gZipFileToPathNewName(new File(path.getAbsolutePath() + "/FileforGZip.txt"),parent.getAbsolutePath(),"YES" );
+	
+		assertTrue(gzFile.exists());
+		gzFile.delete();
+
 	
 	}
 	
 	@Test (expected = FileDoesntExistsException.class)
 	public void gZip_NewPathNewName_PathDoesntExist_Test(){
-		File file = new File("test.txt");
+		File file = new File("4.txt");
 		GZip gz = new GZip();
-		try {
-			file.createNewFile();
-			assertTrue(file.exists());
+
 			gz.gZipFileToPathNewName(file, "C:/tassdffasd/", "YES");
 			file.delete();
 			assertFalse(file.exists());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 
 		
 	}
 	
 	@Test (expected = FileDoesntExistsException.class)
 	public void gZip_NewPathNewName_FileDoesntExist_Test(){
-		File file = new File("test.txt");
+		File file = new File("5.txt");
 		GZip gz = new GZip();
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		file.delete();
@@ -152,19 +127,12 @@ public class GZip_Test {
 	
 	@Test (expected = FileNameInvalidException.class)
 	public void gZip_NewPathNewName_NameInvalid_Test(){
-		File file = new File("test.txt");
+		File file = new File("6.txt");
 		GZip gz = new GZip();
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
-		try {
-			file.createNewFile();
-			assertTrue(file.exists());
+
 			gz.gZipFileToPathNewName(file, currentDirectory.getAbsolutePath(), ".");
 			file.delete();
 			assertFalse(file.exists());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
-
 }
