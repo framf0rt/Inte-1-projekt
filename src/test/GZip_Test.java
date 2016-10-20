@@ -83,7 +83,7 @@ public class GZip_Test {
 
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		File parent = currentDirectory.getParentFile();
-		String s = parent.getAbsolutePath() + "/src";
+		String s = parent.getAbsolutePath();
 
 		GZip gz = new GZip();
 		File path = new File(getClass().getClassLoader().getResource("").getPath());
