@@ -9,7 +9,7 @@ import java.io.IOException;
 public class CopyFile {
 	
 	int i = 0;
-	public void copyFile(File file, String dir){
+	public File copyFile(File file, String dir){
 		String[] fileTypeSplit = file.getName().split("[.]");
 		String[] strings = file.getName().split("_Copy_");
 		
@@ -53,15 +53,20 @@ public class CopyFile {
 				e.printStackTrace();
 			}
 		}
+		return f;
 	}
 	
-	public void copyFileNewPath(File file, String path){
+	/*public void copyFileNewPath(File file, String path){
 		
-	}
+	}*/
 	
 	
-	public void moveFile(File file, String path){
-		
+	public File moveFile(File file, String path)
+	{
+		File moveFile = file;
+		System.out.println(moveFile.getName());
+		file.delete();
+		return copyFile(moveFile,path);
 	}
 
 }
