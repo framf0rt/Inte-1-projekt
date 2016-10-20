@@ -6,8 +6,8 @@ public class WcFake extends Wc {
 	
 	private ArrayList<String> text = new ArrayList<>();
 	
-	public WcFake(String filename){
-		super(filename);
+	public WcFake(){
+		super();
 		text.add("hej	");
 		text.add("	hopp ");
 		text.add("lille  skutt");
@@ -15,9 +15,7 @@ public class WcFake extends Wc {
 		text.add(" bamse");
 		text.add("Husmusen ");
 	}
-	public WcFake(){
-		this("testfile.txt");
-	}
+	
 	@Override
 	public ArrayList<String> getFileText(){
 		return text;

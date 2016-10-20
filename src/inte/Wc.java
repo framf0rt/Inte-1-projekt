@@ -17,6 +17,9 @@ public class Wc {
 		
 		
 	}
+	protected Wc(){
+		
+	}
 	
 	public ArrayList<String> getFileText(){
 		ArrayList<String> lines = new ArrayList<>();
