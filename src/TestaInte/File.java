@@ -1,5 +1,7 @@
 package TestaInte;
 
+import java.util.ArrayList;
+
 public abstract class File extends FSO {
 
 	public File(String name) {
@@ -7,5 +9,5 @@ public abstract class File extends FSO {
 	}
 
 	//public abstract long getSize();
-	
+	public abstract ArrayList<String> getFileText();
 }

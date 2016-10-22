@@ -19,10 +19,7 @@ public class Ls_Test {
 	}
 	
 	
-	@Test
-	public void mock_Pass_Test(){ // Lyckas alltid 
-		assertEquals(1,1);
-	}
+
 	
 	
 	@Test
