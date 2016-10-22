@@ -1,17 +1,17 @@
 package test;
 
 import static org.junit.Assert.*;
-
+import inte.*;
 import org.junit.Test;
 import TestaInte.*;
 public class RealFileTest {
 
-	@Test(expected = IllegalFilePathException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void NotFileTest() {
 		new RealFile(getClass().getClassLoader().getResource("").getPath());
 	}
 	
-	@Test(expected = IllegalFilePathException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void illegalPathTest(){
 		new RealFile("illegalpath");
 	}

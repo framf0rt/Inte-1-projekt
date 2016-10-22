@@ -36,7 +36,7 @@ public class GZip {
 		if (file.exists() == true) {
 			return;
 		} else {
-			throw new FileDoesntExistsException("File is invalid");
+			throw new FileDoesntExistException("File is invalid");
 		}
 
 	}
@@ -46,7 +46,7 @@ public class GZip {
 		if (file.isDirectory() == true) {
 			return;
 		} else {
-			throw new FileDoesntExistsException("Path is invalid");
+			throw new FileDoesntExistException("Path is invalid");
 		}
 	}
 
