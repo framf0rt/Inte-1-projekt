@@ -56,11 +56,14 @@ public class CopyFile {
 		return f;
 	}
 	
-	public File moveFile(File file, String path)
+	public boolean moveFile(File file, String path)
 	{
-		File moveFile = copyFile(file,path);;
+		File moveFile = copyFile(file.getAbsoluteFile(),path);
 		file.delete();
-		return moveFile;
+		if(!file.exists())
+			return true;
+		else
+			return false;
 	}
 
 }
