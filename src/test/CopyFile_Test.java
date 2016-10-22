@@ -10,11 +10,23 @@ import static org.junit.Assert.*;
 
 public class CopyFile_Test {
 	
+	public File CreateFile()
+	{
+		File path = new File(getClass().getClassLoader().getResource("").getPath());
+
+		while (!path.getName().equals("Inte-1-projekt") && path.getParent() != null) {
+			path = path.getParentFile();
+		}
+		assertFalse(path.getParent() == null);
+
+		File file = new File(path.getAbsolutePath() + "/FileforGZip.txt");
+		return file;
+	}
+	
 	@Test
 	public void copyFile_Test(){
 		CopyFile cf = new CopyFile();
-		File current = new File(getClass().getClassLoader().getResource("").getPath());
-		File file = new File(current + "test.txt");
+		File file = CreateFile();
 		try
 		{
 			file.createNewFile();
@@ -25,16 +37,14 @@ public class CopyFile_Test {
 		}
 		File test = cf.copyFile(file,null);
 		assertTrue(test.exists());
+		assertTrue(test.length()>0);
 		test.delete();
-		file.delete();
-		
 	}
 	
 	@Test
 	public void copyFileNewPath_Test(){
 		CopyFile cf = new CopyFile();
-		File current = new File(getClass().getClassLoader().getResource("").getPath());
-		File file = new File(current + "test.txt");
+		File file = CreateFile();
 		
 		try
 		{
@@ -46,15 +56,14 @@ public class CopyFile_Test {
 		}
 		File test = cf.copyFile(file,file.getParentFile().getParentFile().getAbsolutePath());
 		assertTrue(test.exists());
+		assertTrue(test.length()>0);
 		test.delete();
-		file.delete();
 	}
 	
 	@Test
 	public void moveFile_Test(){
 		CopyFile cf = new CopyFile();
-		File current = new File(getClass().getClassLoader().getResource("").getPath());
-		File file = new File(current + "test.txt");
+		File file = new File(CreateFile().getParentFile(),"moveTest.txt");
 		try
 		{
 			file.createNewFile();
@@ -63,10 +72,8 @@ public class CopyFile_Test {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		File test = cf.copyFile(file,file.getParentFile().getParentFile().getAbsolutePath());
-		assertTrue(test.exists());
-		test.delete();
-		file.delete();
+		boolean test = cf.moveFile(file,file.getParentFile().getParentFile().getAbsolutePath());
+		assertTrue(test);
 	}
 
 }
