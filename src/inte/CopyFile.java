@@ -29,30 +29,29 @@ public class CopyFile {
 	
 		}
 		System.out.println(i);
-		if(strings.length == 1){
-			try {
-				if(i>0)
-				f = new File(dirFile + "/",fileTypeSplit[0] +"_Copy_" + i + "."+fileTypeSplit[1]);
-				else
-					f = new File(dirFile + "/",fileTypeSplit[0] + "."+fileTypeSplit[1]);
+		try {
+			if(i>0)
+			f = new File(dirFile + "/",fileTypeSplit[0] +"_Copy_" + i + "."+fileTypeSplit[1]);
+			else
+				f = new File(dirFile + "/",fileTypeSplit[0] + "."+fileTypeSplit[1]);
 
-				FileInputStream fis = new FileInputStream(file);
-				byte[] buffer = new byte[1024];
-				FileOutputStream fos = new FileOutputStream(f);
+			FileInputStream fis = new FileInputStream(file);
+			byte[] buffer = new byte[1024];
+			FileOutputStream fos = new FileOutputStream(f);
+			
+			int len;
+			while ((len = fis.read(buffer)) > 0) {
+				fos.write(buffer, 0, len);
 				
-				int len;
-				while ((len = fis.read(buffer)) > 0) {
-					fos.write(buffer, 0, len);
-					
-				}
-				
-				fis.close();
-				
-				fos.close();
-			} catch (IOException e) {
-				e.printStackTrace();
 			}
+			
+			fis.close();
+			
+			fos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		
 		return f;
 	}
 	
