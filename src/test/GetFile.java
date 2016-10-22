@@ -7,7 +7,7 @@ import java.io.File;
 public class GetFile {
 	
 	
-	private String getTestPath() {
+	public String getTestPath() {
 		File path = new java.io.File(getClass().getClassLoader().getResource("").getPath());
 
 		while (!path.getName().equals("Inte-1-projekt") && path.getParent() != null) {
