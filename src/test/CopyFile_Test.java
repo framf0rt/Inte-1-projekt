@@ -19,7 +19,7 @@ public class CopyFile_Test {
 		}
 		assertFalse(path.getParent() == null);
 
-		File file = new File(path.getAbsolutePath() + "/FileforGZip.txt");
+		File file = new File(path.getAbsolutePath() + "/Testfile.txt");
 		return file;
 	}
 	
