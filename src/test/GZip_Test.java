@@ -19,14 +19,18 @@ import java.io.IOException;
 
 
 public class GZip_Test {
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> refs/remotes/origin/master
 
 	@Test
 
 	public void gZip_MakeGzFileWithSameName_Test() {
 
 		GZip gz = new GZip();
+<<<<<<< HEAD
 
 		File path = new File(getClass().getClassLoader().getResource("").getPath());
 
@@ -36,7 +40,18 @@ public class GZip_Test {
 
 			path = path.getParentFile();
 
+=======
+		File path = new File(getClass().getClassLoader().getResource("").getPath());
+
+		while (!path.getName().equals("Inte-1-projekt") && path.getParent() != null) {
+			path = path.getParentFile();
+>>>>>>> refs/remotes/origin/master
 		}
+		assertFalse(path.getParent() == null);
+		File gzFile = gz.gZipFile(new File(path.getAbsolutePath() + "/FileforGZip.txt"));
+
+		assertTrue(gzFile.exists());
+		gzFile.delete();
 
 		assertFalse(path.getParent() == null);
 
@@ -57,16 +72,23 @@ public class GZip_Test {
 	@Test(expected = FileDoesntExistsException.class)
 
 	public void gZip_FileDoesntExist_Test() {
+<<<<<<< HEAD
 
 		File file = new File("1.txt");
 
+=======
+		File file = new File("1.txt");
+>>>>>>> refs/remotes/origin/master
 		GZip gz = new GZip();
 
 		file.delete();
 
 		gz.gZipFile(file);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> refs/remotes/origin/master
 
 	}
 
@@ -75,6 +97,7 @@ public class GZip_Test {
 	@Test
 
 	public void gZip_MakeGzFileSameNameNewPath_Test() {
+<<<<<<< HEAD
 
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 
@@ -114,6 +137,27 @@ public class GZip_Test {
 
 
 
+=======
+		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
+		File parent = currentDirectory.getParentFile();
+		String s = parent.getAbsolutePath();
+
+		GZip gz = new GZip();
+		File path = new File(getClass().getClassLoader().getResource("").getPath());
+
+		while (!path.getName().equals("Inte-1-projekt") && path.getParent() != null) {
+			path = path.getParentFile();
+		}
+		assertFalse(path.getParent() == null);
+
+		File file = new File(path.getAbsolutePath() + "/FileforGZip.txt");
+		File gzFile = gz.gZipFileToPath(file, s);
+
+		assertTrue(gzFile.exists());
+		gzFile.delete();
+		assertFalse(gzFile.exists());
+
+>>>>>>> refs/remotes/origin/master
 	}
 
 
@@ -121,9 +165,13 @@ public class GZip_Test {
 	@Test(expected = FileDoesntExistsException.class)
 
 	public void gZipNewPath_FileDoesntExist_Test() {
+<<<<<<< HEAD
 
 		File file = new File("2.txt");
 
+=======
+		File file = new File("2.txt");
+>>>>>>> refs/remotes/origin/master
 		GZip gz = new GZip();
 
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
@@ -141,6 +189,7 @@ public class GZip_Test {
 	@Test(expected = FileDoesntExistsException.class)
 
 	public void gZipNewPath_PathDoesntExist_Test() {
+<<<<<<< HEAD
 
 		File file = new File("3.txt");
 
@@ -232,6 +281,53 @@ public class GZip_Test {
 
 		File file = new File("5.txt");
 
+=======
+		File file = new File("3.txt");
+		GZip gz = new GZip();
+		gz.gZipFileToPath(file, "C:/tassdffasd/");
+		file.delete();
+		assertFalse(file.exists());
+
+	}
+
+	@Test
+	public void gZip_MakeGzFileNewPathNewName_Test() {
+
+		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
+		File parent = currentDirectory.getParentFile();
+		String s = parent.getAbsolutePath();
+
+		GZip gz = new GZip();
+		File path = new File(getClass().getClassLoader().getResource("").getPath());
+
+		while (!path.getName().equals("Inte-1-projekt") && path.getParent() != null) {
+			path = path.getParentFile();
+		}
+		assertFalse(path.getParent() == null);
+
+		File file = new File(path.getAbsolutePath() + "/FileforGZip.txt");
+		File gzFile = gz.gZipFileToPathNewName(file, s, "YES");
+
+		assertTrue(gzFile.exists());
+		gzFile.delete();
+		assertFalse(gzFile.exists());
+	}
+
+	@Test(expected = FileDoesntExistsException.class)
+	public void gZip_NewPathNewName_PathDoesntExist_Test() {
+		File file = new File("4.txt");
+		GZip gz = new GZip();
+
+		gz.gZipFileToPathNewName(file, "C:/tassdffasd/", "YES");
+		file.delete();
+		assertFalse(file.exists());
+
+	}
+
+	@Test(expected = FileDoesntExistsException.class)
+	public void gZip_NewPathNewName_FileDoesntExist_Test() {
+		File file = new File("5.txt");
+>>>>>>> refs/remotes/origin/master
 		GZip gz = new GZip();
 
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
@@ -244,6 +340,7 @@ public class GZip_Test {
 
 	}
 
+<<<<<<< HEAD
 
 
 	@Test(expected = FileNameInvalidException.class)
@@ -252,9 +349,15 @@ public class GZip_Test {
 
 		File file = new File("6.txt");
 
+=======
+	@Test(expected = FileNameInvalidException.class)
+	public void gZip_NewPathNewName_NameInvalid_Test() {
+		File file = new File("6.txt");
+>>>>>>> refs/remotes/origin/master
 		GZip gz = new GZip();
 
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
+<<<<<<< HEAD
 
 
 
@@ -267,3 +370,11 @@ public class GZip_Test {
 	}
 
 }
+=======
+
+		gz.gZipFileToPathNewName(file, currentDirectory.getAbsolutePath(), ".");
+		file.delete();
+		assertFalse(file.exists());
+	}
+}
+>>>>>>> refs/remotes/origin/master
