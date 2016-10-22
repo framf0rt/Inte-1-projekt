@@ -23,7 +23,7 @@ public class CopyFile_Test {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		File test = cf.copyFile(file,file.getParentFile().getAbsolutePath());
+		File test = cf.copyFile(file,null);
 		assertTrue(test.exists());
 		test.delete();
 		file.delete();
@@ -35,7 +35,6 @@ public class CopyFile_Test {
 		CopyFile cf = new CopyFile();
 		File current = new File(getClass().getClassLoader().getResource("").getPath());
 		File file = new File(current + "test.txt");
-		//cf.copyFile(file,"C:\\Users\\Miguel\\Documents\\test2\\");
 		
 		try
 		{

@@ -3,13 +3,16 @@ package inte;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 
 public class CopyFile {
 	
 	int i = 0;
 	public File copyFile(File file, String dir){
+		if(dir == null)
+		{
+			dir = file.getParentFile().getAbsolutePath();
+		}
 		String[] fileTypeSplit = file.getName().split("[.]");
 		String[] strings = file.getName().split("_Copy_");
 		
@@ -17,8 +20,6 @@ public class CopyFile {
 		String name = strings[0];
 		String s = file.getName(); 
 		File f = new File(file,s);
-
-	
 	
 		NameFileFilter filter = new NameFileFilter(fileTypeSplit[0]);
 		File dirFile = new File(dir);
@@ -28,7 +29,7 @@ public class CopyFile {
 			i++;
 	
 		}
-		//System.out.println(i);
+		
 		try {
 			if(i>0)
 			f = new File(dirFile + "/",fileTypeSplit[0] +"_Copy_" + i + "."+fileTypeSplit[1]);
@@ -55,15 +56,9 @@ public class CopyFile {
 		return f;
 	}
 	
-	/*public void copyFileNewPath(File file, String path){
-		
-	}*/
-	
-	
 	public File moveFile(File file, String path)
 	{
 		File moveFile = file;
-		//System.out.println(moveFile.getName());
 		file.delete();
 		return copyFile(moveFile,path);
 	}
