@@ -63,7 +63,7 @@ public class CopyFile_Test {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		File test = cf.copyFile(file,file.getParentFile().getParentFile().getAbsolutePath());
+		File test = cf.moveFile(file,file.getParentFile().getParentFile().getAbsolutePath());
 		assertTrue(test.exists());
 		test.delete();
 		file.delete();
