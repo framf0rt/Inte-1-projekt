@@ -25,7 +25,7 @@ public class GZip_Test {
 
 	}
 
-	@Test(expected = FileDoesntExistsException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void gZip_FileDoesntExist_Test() {
 		File file = new File("1.txt");
 		GZip gz = new GZip();
@@ -48,7 +48,7 @@ public class GZip_Test {
 
 	}
 
-	@Test(expected = FileDoesntExistsException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void gZipNewPath_FileDoesntExist_Test() {
 		File file = new File("2.txt");
 		GZip gz = new GZip();
@@ -58,7 +58,7 @@ public class GZip_Test {
 
 	}
 
-	@Test(expected = FileDoesntExistsException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void gZipNewPath_PathDoesntExist_Test() {
 		File file = new File("3.txt");
 		GZip gz = new GZip();
@@ -81,7 +81,7 @@ public class GZip_Test {
 		assertFalse(gzFile.exists());
 	}
 
-	@Test(expected = FileDoesntExistsException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void gZip_NewPathNewName_PathDoesntExist_Test() {
 		File file = new File("4.txt");
 		GZip gz = new GZip();
@@ -91,7 +91,7 @@ public class GZip_Test {
 
 	}
 
-	@Test(expected = FileDoesntExistsException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void gZip_NewPathNewName_FileDoesntExist_Test() {
 		File file = new File("5.txt");
 		GZip gz = new GZip();
