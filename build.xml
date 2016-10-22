@@ -49,6 +49,9 @@
             <batchtest>
                 <fileset dir="src">
 			<include name="**/*Test.java"/>
+			<exclude name="**/*RealFileTest.java"/>
+			<exclude name="**/*RealDirectoryTest.java"/>
+            <exclude name="**/*WcTestReal.java"/>
 		</fileset>
             </batchtest>
 		<formatter type="brief" usefile="false" />
