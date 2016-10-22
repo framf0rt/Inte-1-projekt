@@ -34,7 +34,7 @@ public class CopyFile {
 			if(i>0)
 			f = new File(dirFile + "/",fileTypeSplit[0] +"_Copy_" + i + "."+fileTypeSplit[1]);
 			else
-				f = new File(dirFile + "/",fileTypeSplit[0] + "."+fileTypeSplit[1]);
+				f = new File(dirFile + "/",fileTypeSplit[0] + "." + fileTypeSplit[1]);
 
 			FileInputStream fis = new FileInputStream(file);
 			byte[] buffer = new byte[1024];
@@ -56,11 +56,14 @@ public class CopyFile {
 		return f;
 	}
 	
-	public File moveFile(File file, String path)
+	public boolean moveFile(File file, String path)
 	{
-		File moveFile = file;
+		File moveFile = copyFile(file.getAbsoluteFile(),path);
 		file.delete();
-		return copyFile(moveFile,path);
+		if(!file.exists())
+			return true;
+		else
+			return false;
 	}
 
 }
