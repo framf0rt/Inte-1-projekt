@@ -9,6 +9,11 @@ import inte.*;
 
 public class WcTestReal {
 	private WcForTest wc;
+	private final String testPath = "hej";
+	
+	
+	
+	
 	@Test
 	public void getString() {
 		wc = new WcForTest(new RealFile(getClass().getClassLoader().getResource("").getPath() +"testfile.txt"));
