@@ -5,6 +5,7 @@ import TestaInte.*;
 public class Diff {
 	private ArrayList<ArrayList<String>> files = new ArrayList<>();
 	private ArrayList<String> fileNames = new ArrayList<>();
+	private ArrayList<String> identicalLines = new ArrayList<>();
 	
 	public Diff(File file1, File file2){
 		this.files.add(file1.getFileText());
@@ -30,15 +31,31 @@ public class Diff {
 		
 	}
 	
-	public void identicalLines(){
-		displayLine("Identical lines in both files");
+	public void identicalLines(boolean output){
 		for(String line : files.get(0)){
 			if(files.get(1).contains(line)){
-				displayLine(line);
+				if(output){
+					displayLine(line);
+				}
+				identicalLines.add(line);
 			}
 		}
+	}
+	
+	public void identicalLinesOutput(){
+		displayLine("Identical lines in both files");
+		identicalLines(true);
 		
-		
+	}
+	public boolean identicalFiles(){
+		if(!(files.get(0).size() == files.get(1).size())){
+			return false;
+		}
+		identicalLines(false);
+		if(!(identicalLines.size() == files.get(0).size())){
+			return false;
+		}
+		return true;
 	}
 	
 	public void displayLine(String line){
