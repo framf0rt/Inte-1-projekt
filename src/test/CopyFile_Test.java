@@ -20,14 +20,12 @@ public class CopyFile_Test {
 		assertFalse(path.getParent() == null);
 
 		File file = new File(path.getAbsolutePath() + "/FileforGZip.txt");
-		System.out.println(file.length());
 		return file;
 	}
 	
 	@Test
 	public void copyFile_Test(){
 		CopyFile cf = new CopyFile();
-		//File current = new File(getClass().getClassLoader().getResource("").getPath());
 		File file = CreateFile();
 		try
 		{
@@ -38,19 +36,14 @@ public class CopyFile_Test {
 			e.printStackTrace();
 		}
 		File test = cf.copyFile(file,null);
-		//System.out.println(test.length());
 		assertTrue(test.exists());
 		assertTrue(test.length()>0);
-		//assertTrue();
 		test.delete();
-		//file.delete();
-		
 	}
 	
 	@Test
 	public void copyFileNewPath_Test(){
 		CopyFile cf = new CopyFile();
-		//File current = new File(getClass().getClassLoader().getResource("").getPath());
 		File file = CreateFile();
 		
 		try
@@ -64,9 +57,7 @@ public class CopyFile_Test {
 		File test = cf.copyFile(file,file.getParentFile().getParentFile().getAbsolutePath());
 		assertTrue(test.exists());
 		assertTrue(test.length()>0);
-		//assertTrue(test.length()>0);
 		test.delete();
-		//file.delete();
 	}
 	
 	@Test
