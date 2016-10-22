@@ -9,15 +9,10 @@ import java.io.File;
 
 public class GZip_Test {
 
+	
 	public File getTestFile() {
-		File path = new File(getClass().getClassLoader().getResource("").getPath());
-
-		while (!path.getName().equals("Inte-1-projekt") && path.getParent() != null) {
-			path = path.getParentFile();
-		}
-		assertFalse(path.getParent() == null);
-		File file = new File(path.getAbsolutePath() + "/FileforGZip.txt");
-		return file;
+		GetFile getFile = new GetFile();
+		return getFile.getTestFile();
 	}
 
 	@Test
