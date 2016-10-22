@@ -10,11 +10,11 @@ public class NameFileFilter implements FilenameFilter
 	public NameFileFilter(String name)
 	{
 		this.name = name;
-		System.out.println(this.name + "*");
+		//System.out.println(this.name + "*");
 	}
 	@Override
 	public boolean accept(File dir, String name) {
-		System.out.println(name);
+		//System.out.println(name);
 		if(name.contains(this.name))
 		{
 			return true;

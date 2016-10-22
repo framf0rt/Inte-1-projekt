@@ -28,7 +28,7 @@ public class CopyFile {
 			i++;
 	
 		}
-		System.out.println(i);
+		//System.out.println(i);
 		try {
 			if(i>0)
 			f = new File(dirFile + "/",fileTypeSplit[0] +"_Copy_" + i + "."+fileTypeSplit[1]);
@@ -63,7 +63,7 @@ public class CopyFile {
 	public File moveFile(File file, String path)
 	{
 		File moveFile = file;
-		System.out.println(moveFile.getName());
+		//System.out.println(moveFile.getName());
 		file.delete();
 		return copyFile(moveFile,path);
 	}
