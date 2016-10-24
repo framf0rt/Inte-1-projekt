@@ -1,7 +1,7 @@
 package TestaInte;
 
 public class SmallDirectory extends Directory {
-	private final FSO[] content = new FSO[3];
+	private static final FSO[] content = new FSO[3];
 	public SmallDirectory(String name) {
 		super(name);
 		content[0] = new EmptyDirectory("Directory1");
