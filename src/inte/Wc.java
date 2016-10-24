@@ -16,25 +16,7 @@ public class Wc {
 	protected Wc(){
 		
 	}
-	
-//	public ArrayList<String> getFileText(){
-////		ArrayList<String> lines = new ArrayList<>();
-////		String temp = null;
-////		try{
-////			FileReader fr = new FileReader(rf.getFile());
-////			BufferedReader br = new BufferedReader(fr);
-////			
-////			while((temp = br.readLine())!= null){
-////				lines.add(temp);	
-////			}
-////			fr.close();
-////			br.close();
-////			}catch(IOException e){
-////				e.printStackTrace();
-////		}
-////		
-////		return lines;
-//	}
+
 	
 	public long getNumberOfLines(){
 		return fileText.size();
