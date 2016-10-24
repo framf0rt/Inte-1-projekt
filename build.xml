@@ -25,7 +25,7 @@
         <jar destfile="build/jar/CommandPrompt.jar" basedir="${build.dir}"  excludes="**/*Test.class">
 <!--  Skapar en manifest filen som pekar ut Main klassen-->
             <manifest>
-                <attribute name="Main-Class" value="inte.CommandPrompt"/>
+                <attribute name="Main-Class" value="cmd.CommandPrompt"/>
             </manifest>
         </jar>
     </target>
