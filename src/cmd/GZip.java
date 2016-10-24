@@ -6,27 +6,28 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.zip.GZIPOutputStream;
 
-import fileSystemObjects.*;
+
 
 public class GZip {
 
 	private static final byte[] buffer = new byte[1024];
 
-	public void gZip(File fileGZ) {
-		String filePath = fileGZ.getAbsolutePath();
+	public void gZip(File fileToGZip) {
+		String filePath = fileToGZip.getAbsolutePath();
 		try {
-			FileOutputStream fos = new FileOutputStream(fileGZ);
-			GZIPOutputStream gzos = new GZIPOutputStream(fos);
-			FileInputStream in = new FileInputStream(filePath);
+			FileOutputStream fos = new FileOutputStream(fileToGZip);
+			GZIPOutputStream gzipos = new GZIPOutputStream(fos);
+			FileInputStream fis = new FileInputStream(filePath);
 
-			int len;
-			while ((len = in.read(buffer)) > 0) {
-				gzos.write(buffer, 0, len);
+			int length;
+			while ((length = fis.read(buffer)) > 0) {
+				gzipos.write(buffer, 0, length);
 			}
 
-			in.close();
-			gzos.finish();
-			gzos.close();
+			fis.close();
+			gzipos.finish();
+			gzipos.close();
+			fos.close();
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -34,18 +35,17 @@ public class GZip {
 
 	}
 
-	public void checkFileValid(File file) {
+	public void checkFileExists(File file) {
 		if (file.exists() == true) {
 			return;
 		} else {
-			throw new FileDoesntExistException("File is invalid");
+			throw new FileDoesntExistException("File doesn't exists");
 		}
 
 	}
 
-	public void checkPathValid(String path) {
-		File file = new File(path);
-		if (file.isDirectory() == true) {
+	public void isDirectory(String path) {
+		if ((new File(path)).isDirectory()) {
 			return;
 		} else {
 			throw new FileDoesntExistException("Path is invalid");
@@ -53,47 +53,46 @@ public class GZip {
 	}
 
 	public void checkNameValid(String name) {
-		if (name != null && name != "" && !name.contains(".") && !name.contains("/") && !name.contains("\\")) {
+		if (name != null && name != "" && !name.contains(".") && !name.contains("/") && !name.contains("\\") && !name.contains(("\\s+"))) {
 			return;
 		} else {
-			throw new FileNameInvalidException("Name is invalid");
+			throw new FileNameInvalidException("Is not a folder!");
 		}
 	}
 
 	public File gZipFile(File file) {
-		checkFileValid(file);
+		checkFileExists(file);
 		
 		//RealFile realfile = new RealFile(file.getAbsolutePath());
 		
-		String pathFile = file.getParent();
+		String filePath = file.getParent();
 		String fileName = file.getName();
 		String[] strings = fileName.split("[.]");
 		String fileNameWithoutFiletype = strings[0];
-		File fileGZ = new File(pathFile, fileNameWithoutFiletype + "1.gz");
-		gZip(fileGZ);
-		return fileGZ;
+		File fileToGZip = new File(filePath, fileNameWithoutFiletype + ".gz");
+		gZip(fileToGZip);
+		return fileToGZip;
 
 	}
 
 	public File gZipFileToPath(File file, String path) {
-		checkFileValid(file);
-		checkPathValid(path);
-		File pathChecked = new File(path);
-		String fileName = file.getName();
-		String[] strings = fileName.split("[.]");
+		checkFileExists(file);
+		isDirectory(path);
+		String filename = file.getName();
+		String[] strings = filename.split("[.]");
 		String fileNameWithoutFiletype = strings[0];
-		File fileGZ = new File(pathChecked, fileNameWithoutFiletype + "2.gz");
+		File fileGZ = new File(path, fileNameWithoutFiletype + ".gz");
 		gZip(fileGZ);
 		return fileGZ;
 
 	}
 
 	public File gZipFileToPathNewName(File file, String path, String name) {
-		checkFileValid(file);
-		checkPathValid(path);
+		checkFileExists(file);
+		isDirectory(path);
 		checkNameValid(name);
-		File pathChecked = new File(path);
-		File fileGZ = new File(pathChecked, name + "3.gz");
+		
+		File fileGZ = new File(path, name + ".gz");
 		gZip(fileGZ);
 		return fileGZ;
 

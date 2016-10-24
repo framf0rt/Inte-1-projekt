@@ -11,12 +11,12 @@ import fileSystemObjects.EmptyDirectory;
 import fileSystemObjects.SmallDirectory;
 
 public class EkvivalensklassTest {
-	private LsOutputTemp outputTest;
+	private LsOutput outputTest;
 	private ArrayList<String> test;
 
 	@Before
 	public void beforeTest(){
-		outputTest = new LsOutputTemp();
+		outputTest = new LsOutput();
 		test = new ArrayList<>();
 	}
 	

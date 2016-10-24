@@ -10,12 +10,12 @@ import static org.junit.Assert.assertEquals;
 import java.io.File;
 import java.util.ArrayList;
 
-public class Ls_Test {
-	private LsOutputTemp outputTest;
+public class LsTest {
+	private LsOutput outputTest;
 	
 	@Before
 	public void beforeTest(){
-		outputTest = new LsOutputTemp();
+		outputTest = new LsOutput();
 	}
 	
 	
@@ -32,7 +32,7 @@ public class Ls_Test {
 	@Test
 	public void showFilesTest(){
 		ArrayList<String> test = new ArrayList<>();
-		outputTest = new LsOutputTemp();
+		outputTest = new LsOutput();
 		test.add("Directory: Directory1");
 		test.add("File: File1");
 		test.add("File: File2");

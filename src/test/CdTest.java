@@ -8,7 +8,7 @@ import org.junit.*;
 
 import cmd.*;
 
-public class Cd_Test {
+public class CdTest {
 	
 	private Cd cd = new Cd();
 	

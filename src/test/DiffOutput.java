@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import cmd.Diff;
 import fileSystemObjects.*;
-public class DiffForTest extends Diff {
+public class DiffOutput extends Diff {
 	
 	private ArrayList<String> output = new ArrayList<>();
 	
-	public DiffForTest(File file1, File file2){
+	public DiffOutput(File file1, File file2){
 		super(file1, file2);
 		
 	}
