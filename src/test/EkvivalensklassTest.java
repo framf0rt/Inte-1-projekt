@@ -20,15 +20,6 @@ public class EkvivalensklassTest {
 		test = new ArrayList<>();
 	}
 	
-	
-
-	
-	
-//	@Test
-//	public void getDirectoryTest(){
-//		
-//		assertEquals(getClass().getClassLoader().getResource("").getPath(), outputTest.getCurrentDirectory());
-//	}
 	@Test(expected = NullPointerException.class)
 	public void nullTest(){
 		outputTest.showContentWithoutSize(null);
@@ -79,5 +70,4 @@ public class EkvivalensklassTest {
 		outputTest.showContentSortedSize(new EmptyDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
-
 }
