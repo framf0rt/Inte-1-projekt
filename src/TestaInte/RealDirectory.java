@@ -12,7 +12,7 @@ public class RealDirectory extends Directory {
 		}
 		dir=new java.io.File(path);
 		if(!dir.exists()){
-			throw new IllegalFilePathException("File doesn't exist");
+			throw new IllegalFilePathException("Directory doesn't exist");
 		}
 		if(!dir.isDirectory()){
 			throw new IllegalFilePathException("It's not a directory");
@@ -20,10 +20,12 @@ public class RealDirectory extends Directory {
 		}
 		setName(dir.getName());
 	}
+
 	
 	public RealDirectory(String path){
 		this(path, "");
 	}
+
 
 	@Override
 	public FSO[] getContent() {

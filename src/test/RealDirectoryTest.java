@@ -9,17 +9,17 @@ public class RealDirectoryTest {
 
 	@Test(expected = IllegalFilePathException.class)
 	public void nullFileReference() {
-		RealDirectory rl = new RealDirectory(null);
+		new RealDirectory(null);
 	}
 	
 	@Test(expected = IllegalFilePathException.class)
 	public void illegalPathTest(){
-		RealDirectory rl = new RealDirectory("hejhopp");
+		new RealDirectory("hejhopp");
 	}
 	
 	@Test(expected = IllegalFilePathException.class)
 	public void notDirectoryTest(){
-		RealDirectory rl = new RealDirectory((getClass().getClassLoader().getResource("").getPath() + "RealDirectoryTest.java"));
+		new RealDirectory((getClass().getClassLoader().getResource("").getPath() + "RealDirectoryTest.java"));
 	}
 	
 	@Test
