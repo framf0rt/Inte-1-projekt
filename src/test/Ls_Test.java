@@ -58,15 +58,15 @@ public class Ls_Test {
 		assertEquals(test, outputTest.showFilesOutput);
 	}
 	
-//	@Test
-//	public void showFilesSortedTest(){
-//		ArrayList<String> test = new ArrayList<>();
-//		test.add("Directory: Directory1 Size: 0");
-//		test.add("File: File2 Size: 100");
-//		test.add("File: File1 Size: 50");
-//		outputTest.showContentSortedSize(new SmallDirectory("TestName"));
-//		assertEquals(test, outputTest.showFilesOutput);
-//	}
+	@Test
+	public void showFilesSortedTest(){
+		ArrayList<String> test = new ArrayList<>();
+		test.add("Directory: Directory1 Size: 0");
+		test.add("File: File2 Size: 100");
+		test.add("File: File1 Size: 50");
+		outputTest.showContentSortedSize(new SmallDirectory("TestName"));
+		assertEquals(test, outputTest.showFilesOutput);
+	}
 
 
 }
