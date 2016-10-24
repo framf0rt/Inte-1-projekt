@@ -32,6 +32,7 @@ public class Ls_Test {
 	@Test
 	public void showFilesTest(){
 		ArrayList<String> test = new ArrayList<>();
+		outputTest = new LsOutputTemp();
 		test.add("Directory: Directory1");
 		test.add("File: File1");
 		test.add("File: File2");
