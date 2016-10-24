@@ -1,12 +1,12 @@
 package test;
 
-import inte.*;
-
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 
 import org.junit.*;
+
+import cmd.*;
 
 public class Cd_Test {
 	

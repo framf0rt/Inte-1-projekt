@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import TestaInte.RealFile;
+import fileSystemObjects.RealFile;
 
 public class DiffTest {
 	private final String testPath = new GetFile().getTestPath();

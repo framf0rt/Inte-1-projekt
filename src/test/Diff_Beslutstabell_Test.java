@@ -2,7 +2,8 @@ package test;
 
 import org.junit.*;
 
-import inte.*;
+import cmd.*;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;

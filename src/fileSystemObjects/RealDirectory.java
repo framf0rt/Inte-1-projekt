@@ -1,4 +1,4 @@
-package TestaInte;
+package fileSystemObjects;
 
 public class RealDirectory extends Directory {
 

@@ -1,4 +1,4 @@
-package TestaInte;
+package fileSystemObjects;
 
 public abstract class Directory extends FSO{
 

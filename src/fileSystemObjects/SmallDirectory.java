@@ -1,4 +1,4 @@
-package TestaInte;
+package fileSystemObjects;
 
 public class SmallDirectory extends Directory {
 //	private static final FSO[] content = new FSO[3];

@@ -1,10 +1,9 @@
 package test;
 
-import inte.Diff;
-
 import java.util.ArrayList;
 
-import TestaInte.*;
+import cmd.Diff;
+import fileSystemObjects.*;
 public class DiffForTest extends Diff {
 	
 	private ArrayList<String> output = new ArrayList<>();

@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import TestaInte.FakeFile;
+import fileSystemObjects.FakeFile;
 
 
 public class WcTest {

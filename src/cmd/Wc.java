@@ -1,8 +1,8 @@
-package inte;
+package cmd;
 
 import java.util.ArrayList;
 
-import TestaInte.*;
+import fileSystemObjects.*;
 
 public class Wc {
 	private ArrayList<String> fileText;

@@ -1,10 +1,9 @@
 package test;
 
-import inte.Wc;
-
 import java.util.ArrayList;
 
-import TestaInte.*;
+import cmd.Wc;
+import fileSystemObjects.*;
 public class WcForTest extends Wc {
 	
 	private ArrayList<String> fileText;
