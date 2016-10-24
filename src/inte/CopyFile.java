@@ -12,7 +12,7 @@ public class CopyFile {
 		
 		if(file == null || file.exists() != true)
 		{
-			throw new FileDoesntExistsException("file doesnt exist"); 
+			throw new FileDoesntExistException("file doesnt exist"); 
 		}
 		else if(dir == null || dir == "")
 		{
@@ -32,7 +32,7 @@ public class CopyFile {
 		
 		if(!dirFile.isDirectory())
 		{
-			throw new FolderDoesntExistsException("Folder doesnt exist");
+			throw new FolderDoesntExistException("Folder doesnt exist");
 		}
 		
 		filter.accept(dirFile,fileTypeSplit[0]);
