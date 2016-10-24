@@ -1,4 +1,4 @@
-package inte;
+package cmd;
 
 import java.io.File;
 import java.io.FileInputStream;

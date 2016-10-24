@@ -1,10 +1,10 @@
-package TestaInte;
+package fileSystemObjects;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import inte.FileDoesntExistException;
-import inte.FileNameInvalidException;
+import cmd.FileDoesntExistException;
+import cmd.FileNameInvalidException;
 
 
 

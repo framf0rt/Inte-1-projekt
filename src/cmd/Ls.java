@@ -1,10 +1,9 @@
-package inte;
-
-
-import TestaInte.*;
+package cmd;
 
 
 import java.util.Arrays;
+
+import fileSystemObjects.*;
 
 
 public class Ls {

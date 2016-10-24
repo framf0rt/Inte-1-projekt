@@ -1,7 +1,7 @@
-package inte;
+package cmd;
 import java.util.ArrayList;
 
-import TestaInte.*;
+import fileSystemObjects.*;
 public class Diff {
 	private ArrayList<ArrayList<String>> files = new ArrayList<>();
 	private ArrayList<String> fileNames = new ArrayList<>();

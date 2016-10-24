@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import TestaInte.EmptyDirectory;
-import TestaInte.SmallDirectory;
+import fileSystemObjects.EmptyDirectory;
+import fileSystemObjects.SmallDirectory;
 
 public class EkvivalensklassTest {
 	private LsOutputTemp outputTest;

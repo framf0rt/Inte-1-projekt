@@ -1,7 +1,8 @@
 package test;
 
 import org.junit.*;
-import inte.*;
+
+import cmd.*;
 
 import static org.junit.Assert.*;
 

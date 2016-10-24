@@ -1,9 +1,9 @@
 package test;
 
 import org.junit.*;
-import TestaInte.*;
 
-import inte.*;
+import cmd.*;
+import fileSystemObjects.*;
 
 import static org.junit.Assert.assertEquals;
 

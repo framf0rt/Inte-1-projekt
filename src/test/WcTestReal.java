@@ -3,9 +3,11 @@ package test;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import TestaInte.*;
+
+import cmd.*;
+import fileSystemObjects.*;
+
 import org.junit.Test;
-import inte.*;
 
 public class WcTestReal {
 	private WcForTest wc;

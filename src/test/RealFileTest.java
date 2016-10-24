@@ -1,9 +1,11 @@
 package test;
 
 import static org.junit.Assert.*;
-import inte.*;
+
 import org.junit.Test;
-import TestaInte.*;
+
+import cmd.*;
+import fileSystemObjects.*;
 public class RealFileTest {
 
 	@Test(expected = FileDoesntExistException.class)

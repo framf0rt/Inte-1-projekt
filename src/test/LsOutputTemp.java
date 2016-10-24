@@ -3,9 +3,9 @@ package test;
 import java.io.File;
 import java.util.ArrayList;
 
-import TestaInte.Directory;
-import TestaInte.FSO;
-import inte.Ls;
+import cmd.Ls;
+import fileSystemObjects.Directory;
+import fileSystemObjects.FSO;
 
 public class LsOutputTemp extends Ls{
 	

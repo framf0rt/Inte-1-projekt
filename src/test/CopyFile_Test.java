@@ -5,7 +5,8 @@ import java.io.IOException;
 
 import org.junit.*;
 
-import inte.*;
+import cmd.*;
+
 import static org.junit.Assert.*;
 
 public class CopyFile_Test {

@@ -1,4 +1,4 @@
-package TestaInte;
+package fileSystemObjects;
 
 public abstract class FSO implements Comparable<FSO>{
 
