@@ -48,11 +48,11 @@ public class Diff {
 		
 	}
 	public boolean identicalFiles(){
-		if(!(files.get(0).size() == files.get(1).size())){
+		if(files.get(0).size() != files.get(1).size()){
 			return false;
 		}
 		identicalLines(false);
-		if(!(identicalLines.size() == files.get(0).size())){
+		if(identicalLines.size() != files.get(0).size()){
 			return false;
 		}
 		return true;
