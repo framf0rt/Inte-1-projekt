@@ -1,37 +1,41 @@
 package test;
 
-import org.junit.*;
-import TestaInte.*;
+import static org.junit.Assert.*;
 
-import inte.*;
-
-import static org.junit.Assert.assertEquals;
-
-import java.io.File;
 import java.util.ArrayList;
 
-public class Ls_Test {
+import org.junit.Before;
+import org.junit.Test;
+
+import TestaInte.EmptyDirectory;
+import TestaInte.SmallDirectory;
+
+public class EkvivalensklassTest {
 	private LsOutputTemp outputTest;
-	
+	private ArrayList<String> test;
+
 	@Before
 	public void beforeTest(){
 		outputTest = new LsOutputTemp();
+		test = new ArrayList<>();
 	}
 	
 	
 
 	
 	
-	@Test
-	public void getDirectoryTest(){
-		
-		assertEquals(getClass().getClassLoader().getResource("").getPath(), outputTest.getCurrentDirectory());
+//	@Test
+//	public void getDirectoryTest(){
+//		
+//		assertEquals(getClass().getClassLoader().getResource("").getPath(), outputTest.getCurrentDirectory());
+//	}
+	@Test(expected = NullPointerException.class)
+	public void nullTest(){
+		outputTest.showContentWithoutSize(null);
 	}
-	
 	
 	@Test
 	public void showFilesTest(){
-		ArrayList<String> test = new ArrayList<>();
 		test.add("Directory: Directory1");
 		test.add("File: File1");
 		test.add("File: File2");
@@ -41,31 +45,39 @@ public class Ls_Test {
 	
 	@Test
 	public void showEmpty(){
-		ArrayList<String> test = new ArrayList<>();
 		test.add("Directory is empty");
 		outputTest.showContentWithoutSize(new EmptyDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
 	@Test
 	public void showFilesSizeTest(){
-		ArrayList<String> test = new ArrayList<>();
 		test.add("Directory: Directory1 Size: 0");
 		test.add("File: File1 Size: 50");
 		test.add("File: File2 Size: 100");
-		
 		outputTest.showContentSize(new SmallDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
 	
 	@Test
 	public void showFilesSortedTest(){
-		ArrayList<String> test = new ArrayList<>();
 		test.add("Directory: Directory1 Size: 0");
 		test.add("File: File2 Size: 100");
 		test.add("File: File1 Size: 50");
 		outputTest.showContentSortedSize(new SmallDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
-
+	@Test
+	public void showFilesSizeEmptyDirectoryTest(){
+		test.add("Directory is empty");
+		outputTest.showContentSize(new EmptyDirectory("TestName"));
+		assertEquals(test, outputTest.showFilesOutput);
+	}
+	
+	@Test
+	public void showFilesSortedEmptyDirectoryTest(){
+		test.add("Directory is empty");
+		outputTest.showContentSortedSize(new EmptyDirectory("TestName"));
+		assertEquals(test, outputTest.showFilesOutput);
+	}
 
 }
