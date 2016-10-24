@@ -8,7 +8,7 @@ import java.io.File;
 
 import org.junit.*;
 
-public class cd_Test {
+public class Cd_Test {
 	
 	private Cd cd = new Cd();
 	
@@ -26,6 +26,16 @@ public class cd_Test {
 	}
 	
 	@Test
+	public void cd_GoToDirectory_short_Test(){ 
+		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
+		String currentDirectoryString = currentDirectory.getAbsolutePath();
+		cd.cdDirectoryUpwards(); // Måste ta ett steg upp för att säkerställa att Travis har en mapp under
+		String target = currentDirectory.getName();	
+		String current = cd.cdDirectoryShortChangePath(target);
+		assertEquals(currentDirectoryString,current);
+	}
+	
+	@Test
 	public void cdDirectoryChangePath_DirectoryTrue_Test(){
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		String target = currentDirectory.getParentFile().getAbsolutePath();
@@ -34,13 +44,13 @@ public class cd_Test {
 		
 	}
 	
-	@Test (expected=FolderDoesntExistsException.class)
+	@Test (expected=FolderDoesntExistException.class)
 	public void cdDirectoryChangePath_DirectoryFalse_Test(){
 		String target ="D:\\Inte_Pro";
 		cd.cdDirectoryChangePath(target);
 	}
 	
-	@Test (expected=FolderDoesntExistsException.class)
+	@Test (expected=FolderDoesntExistException.class)
 	public void cdDirectoryChangePath_IsFile_Test(){
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		String target ="D:\\Inte_Projekt\\README.md";
