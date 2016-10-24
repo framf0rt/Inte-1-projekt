@@ -1,5 +1,7 @@
 package inte;
 
+import TestaInte.*;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -51,7 +53,7 @@ public class GZip {
 	}
 
 	public void checkNameValid(String name) {
-		if (name != null && name != "" && name != "." && !name.contains("/") && !name.contains("\\")) {
+		if (name != null && name != "" && !name.contains(".") && !name.contains("/") && !name.contains("\\")) {
 			return;
 		} else {
 			throw new FileNameInvalidException("Name is invalid");
@@ -60,6 +62,9 @@ public class GZip {
 
 	public File gZipFile(File file) {
 		checkFileValid(file);
+		
+		//RealFile realfile = new RealFile(file.getAbsolutePath());
+		
 		String pathFile = file.getParent();
 		String fileName = file.getName();
 		String[] strings = fileName.split("[.]");
