@@ -52,6 +52,7 @@
 			<exclude name="**/*RealFileTest.java"/>
 			<exclude name="**/*RealDirectoryTest.java"/>
             		<exclude name="**/*WcTestReal.java"/>
+                	<exclude name="**/*ProfilerTest.java"/>
 		</fileset>
             </batchtest>
 		<formatter type="brief" usefile="false" />

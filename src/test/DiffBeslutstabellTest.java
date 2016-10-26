@@ -16,15 +16,15 @@ public class DiffBeslutstabellTest {
 
 	@Test(expected = NullPointerException.class)
 	public void fileIsNullTest() {
-		Diff diff = new Diff(null, null);
+	new Diff(null, null);
 
 	}
-	
-	@Test (expected = FileNameInvalidException.class)
+
+	@Test(expected = FileNameInvalidException.class)
 	public void fileIsNotComparableTest() {
 		RealFile file1 = new RealFile(testPath + "/TestFileWc.txt");
 		RealFile file2 = new RealFile(testPath + "/scifi.jpg");
-		DiffOutput dOut = new DiffOutput(file1, file2);
+		new DiffOutput(file1, file2);
 
 	}
 
@@ -40,17 +40,16 @@ public class DiffBeslutstabellTest {
 		assertEquals(identicalList, dOut.getOutput());
 
 	}
-	
+
 	@Test
-	public void filesIsWrongSizeTest(){
-		ArrayList<String> identicalList = new ArrayList<>();
+	public void filesIsWrongSizeTest() {
 		DiffOutput dOut = new DiffOutput(new RealFile(testPath + "/Testfile.txt"),
 				new RealFile(testPath + "/compareFile.txt"));
 		assertFalse(dOut.identicalFiles());
 	}
-	
+
 	@Test
-	public void filesIsIdenticalUniqueLinesTest(){
+	public void filesIsIdenticalUniqueLinesTest() {
 		ArrayList<String> identicalList = new ArrayList<>();
 		DiffOutput dOut = new DiffOutput(new RealFile(testPath + "/TestFileWc.txt"),
 				new RealFile(testPath + "/TestFileWc.txt"));
@@ -59,7 +58,6 @@ public class DiffBeslutstabellTest {
 		identicalList.add("Unique lines for TestFileWc.txt");
 		assertEquals(identicalList, dOut.getOutput());
 
-		
 	}
 
 	@Test
