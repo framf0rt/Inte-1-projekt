@@ -5,7 +5,8 @@ import java.io.IOException;
 
 import org.junit.*;
 
-import inte.*;
+import cmd.*;
+
 import static org.junit.Assert.*;
 
 public class CopyFile_Test {
@@ -19,7 +20,7 @@ public class CopyFile_Test {
 		}
 		assertFalse(path.getParent() == null);
 
-		File file = new File(path.getAbsolutePath() + "/FileforGZip.txt");
+		File file = new File(path.getAbsolutePath() + "/Testfile.txt");
 		return file;
 	}
 	

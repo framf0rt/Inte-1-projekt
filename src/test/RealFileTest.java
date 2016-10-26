@@ -3,15 +3,19 @@ package test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import TestaInte.*;
-public class RealFileTest {
 
-	@Test(expected = IllegalFilePathException.class)
+import cmd.*;
+import fileSystemObjects.*;
+public class RealFileTest {
+	
+	private final String testPath = new GetFile().getTestPath();
+
+	@Test(expected = FileDoesntExistException.class)
 	public void NotFileTest() {
 		new RealFile(getClass().getClassLoader().getResource("").getPath());
 	}
 	
-	@Test(expected = IllegalFilePathException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void illegalPathTest(){
 		new RealFile("illegalpath");
 	}
@@ -23,8 +27,10 @@ public class RealFileTest {
 	
 	@Test
 	public void fileSizeTest(){
-		long realFileSize = new RealFile("c:/Recovery.txt").getSize();
-		long javaFileSize = new java.io.File("c:/Recovery.txt").length();
+		
+		
+		long realFileSize = new RealFile(testPath +"/TestFileWc.txt").getSize();
+		long javaFileSize = new java.io.File(testPath +"/TestFileWc.txt").length();
 		assertEquals(realFileSize, javaFileSize);
 	
 	}

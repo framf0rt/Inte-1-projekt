@@ -4,8 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-
-import TestaInte.SmallDirectory;
+import fileSystemObjects.SmallDirectory;
 
 public class FakeDirectoryTest {
 
