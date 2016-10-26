@@ -6,8 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.zip.GZIPOutputStream;
 
-
-
 public class GZip {
 
 	private static final byte[] buffer = new byte[1024];
@@ -53,7 +51,8 @@ public class GZip {
 	}
 
 	public void checkNameValid(String name) {
-		if (name != null && name != "" && !name.contains(".") && !name.contains("/") && !name.contains("\\") && !name.contains(("\\s+"))) {
+		if (name != null && name.equals("") && !name.contains(".") && !name.contains("/") && !name.contains("\\")
+				&& !name.contains(("\\s+"))) {
 			return;
 		} else {
 			throw new FileNameInvalidException("File name is invalid");
@@ -62,9 +61,9 @@ public class GZip {
 
 	public File gZipFile(File file) {
 		checkFileExists(file);
-		
-		//RealFile realfile = new RealFile(file.getAbsolutePath());
-		
+
+		// RealFile realfile = new RealFile(file.getAbsolutePath());
+
 		String filePath = file.getParent();
 		String fileName = file.getName();
 		String[] strings = fileName.split("[.]");
@@ -91,7 +90,7 @@ public class GZip {
 		checkFileExists(file);
 		isDirectory(path);
 		checkNameValid(name);
-		
+
 		File fileGZ = new File(path, name + ".gz");
 		gZip(fileGZ);
 		return fileGZ;

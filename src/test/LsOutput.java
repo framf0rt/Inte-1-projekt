@@ -11,18 +11,7 @@ public class LsOutput extends Ls{
 	
 	public ArrayList<String> showFilesOutput = new ArrayList<>();
 	
-//	@Override
-//	public void showFiles(File[] files){
-//		for (File file : files) { 
-//			if (file.isDirectory()) { 
-//				showFilesOutput.add("Directory: " + file.getName()); 
-//
-//			}else{ 
-//				showFilesOutput.add("File: " + file.getName());
-//			} 
-//		}
-//		
-//	}
+
 	@Override
 	protected void showDirectory(FSO dir, boolean showSize){
 		if(showSize){

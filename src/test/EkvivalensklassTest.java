@@ -15,57 +15,59 @@ public class EkvivalensklassTest {
 	private ArrayList<String> test;
 
 	@Before
-	public void beforeTest(){
+	public void beforeTest() {
 		outputTest = new LsOutput();
 		test = new ArrayList<>();
 	}
-	
+
 	@Test(expected = NullPointerException.class)
-	public void nullTest(){
+	public void nullTest() {
 		outputTest.showContentWithoutSize(null);
 	}
-	
+
 	@Test
-	public void showFilesTest(){
+	public void showFilesTest() {
 		test.add("Directory: Directory1");
 		test.add("File: File1");
 		test.add("File: File2");
 		outputTest.showContentWithoutSize(new SmallDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
-	
+
 	@Test
-	public void showEmpty(){
+	public void showEmpty() {
 		test.add("Directory is empty");
 		outputTest.showContentWithoutSize(new EmptyDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
+
 	@Test
-	public void showFilesSizeTest(){
+	public void showFilesSizeTest() {
 		test.add("Directory: Directory1 Size: 0");
 		test.add("File: File1 Size: 50");
 		test.add("File: File2 Size: 100");
 		outputTest.showContentSize(new SmallDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
-	
+
 	@Test
-	public void showFilesSortedTest(){
+	public void showFilesSortedTest() {
 		test.add("Directory: Directory1 Size: 0");
 		test.add("File: File2 Size: 100");
 		test.add("File: File1 Size: 50");
 		outputTest.showContentSortedSize(new SmallDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
+
 	@Test
-	public void showFilesSizeEmptyDirectoryTest(){
+	public void showFilesSizeEmptyDirectoryTest() {
 		test.add("Directory is empty");
 		outputTest.showContentSize(new EmptyDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
-	
+
 	@Test
-	public void showFilesSortedEmptyDirectoryTest(){
+	public void showFilesSortedEmptyDirectoryTest() {
 		test.add("Directory is empty");
 		outputTest.showContentSortedSize(new EmptyDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);

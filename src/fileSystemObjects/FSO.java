@@ -24,6 +24,12 @@ public abstract class FSO implements Comparable<FSO>{
 	@Override
 	public int compareTo(FSO arg0) {
 		if(this.isDirectory() && arg0.isDirectory()){
+			if(this.getSize()< arg0.getSize()){
+				return 1;
+			}
+			if(this.getSize()> arg0.getSize()){
+				return -1;
+			}
 			return 0;
 		}
 		if(this.isDirectory() && !arg0.isDirectory()){
@@ -38,6 +44,7 @@ public abstract class FSO implements Comparable<FSO>{
 		if(this.getSize()> arg0.getSize()){
 			return -1;
 		}
+		
 		return 0;
 	}
 }
