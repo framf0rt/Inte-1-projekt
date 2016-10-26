@@ -44,7 +44,7 @@ public class DiffBeslutstabellTest {
 	@Test
 	public void filesIsWrongSizeTest(){
 		ArrayList<String> identicalList = new ArrayList<>();
-		DiffOutput dOut = new DiffOutput(new RealFile(testPath + "/TestFile.txt"),
+		DiffOutput dOut = new DiffOutput(new RealFile(testPath + "/Testfile.txt"),
 				new RealFile(testPath + "/compareFile.txt"));
 		assertFalse(dOut.identicalFiles());
 	}
