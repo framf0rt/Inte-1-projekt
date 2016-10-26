@@ -18,7 +18,7 @@ public class CdTest {
 	}
 	
 	@Test
-	public void cdDirectoryUpwards_Test(){
+	public void cdDirectoryUpwardsTest(){
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		String currentDirectoryString = cd.cdDirectoryUpwards();
 		String fileParent = currentDirectory.getParentFile().getAbsolutePath();
@@ -26,7 +26,7 @@ public class CdTest {
 	}
 	
 	@Test
-	public void cd_GoToDirectory_short_Test(){ 
+	public void cdGoToDirectoryShortTest(){ 
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		String currentDirectoryString = currentDirectory.getAbsolutePath();
 		cd.cdDirectoryUpwards(); // Måste ta ett steg upp för att säkerställa att Travis har en mapp under
@@ -35,8 +35,17 @@ public class CdTest {
 		assertEquals(currentDirectoryString,current);
 	}
 	
+	@Test (expected = FolderDoesntExistException.class)
+	public void cdGoToDirectoryShortFailTest(){ 
+		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
+		String currentDirectoryString = currentDirectory.getAbsolutePath();
+		cd.cdDirectoryUpwards();
+		String target = "FAIL";
+		String current = cd.cdDirectoryShortChangePath(target);
+	}
+	
 	@Test
-	public void cdDirectoryChangePath_DirectoryTrue_Test(){
+	public void cdDirectoryChangePathDirectoryTrueTest(){
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		String target = currentDirectory.getParentFile().getAbsolutePath();
 		String current = cd.cdDirectoryChangePath(target);
@@ -45,13 +54,13 @@ public class CdTest {
 	}
 	
 	@Test (expected=FolderDoesntExistException.class)
-	public void cdDirectoryChangePath_DirectoryFalse_Test(){
+	public void cdDirectoryChangePathDirectoryFalseTest(){
 		String target ="D:\\Inte_Pro";
 		cd.cdDirectoryChangePath(target);
 	}
 	
 	@Test (expected=FolderDoesntExistException.class)
-	public void cdDirectoryChangePath_IsFile_Test(){
+	public void cdDirectoryChangePathIsFileTest(){
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		String target ="D:\\Inte_Projekt\\README.md";
 		cd.cdDirectoryChangePath(target);
