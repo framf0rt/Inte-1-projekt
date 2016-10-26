@@ -12,7 +12,7 @@ public class CmdTestSuite {
 
 	@Suite.SuiteClasses({
 	   CdTest.class,
-	   CopyFile_Test.class,
+	   CopyFileTest.class,
 	   DiffBeslutstabellTest.class,
 	   DiffTest.class,
 	   EkvivalensklassTest.class,
