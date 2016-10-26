@@ -9,7 +9,7 @@ import cmd.*;
 
 import static org.junit.Assert.*;
 
-public class CopyFile_Test {
+public class CopyFileTest {
 	
 	public File CreateFile()
 	{
@@ -25,7 +25,7 @@ public class CopyFile_Test {
 	}
 	
 	@Test
-	public void copyFile_Test(){
+	public void copyFileTest(){
 		CopyFile cf = new CopyFile();
 		File file = CreateFile();
 		try
@@ -43,7 +43,7 @@ public class CopyFile_Test {
 	}
 	
 	@Test
-	public void copyFileNewPath_Test(){
+	public void copyFileNewPathTest(){
 		CopyFile cf = new CopyFile();
 		File file = CreateFile();
 		
@@ -62,7 +62,7 @@ public class CopyFile_Test {
 	}
 	
 	@Test
-	public void moveFile_Test(){
+	public void moveFileTest(){
 		CopyFile cf = new CopyFile();
 		File file = new File(CreateFile().getParentFile(),"moveTest.txt");
 		try
