@@ -7,6 +7,8 @@ import org.junit.Test;
 import cmd.*;
 import fileSystemObjects.*;
 public class RealFileTest {
+	
+	private final String testPath = new GetFile().getTestPath();
 
 	@Test(expected = FileDoesntExistException.class)
 	public void NotFileTest() {
@@ -25,8 +27,10 @@ public class RealFileTest {
 	
 	@Test
 	public void fileSizeTest(){
-		long realFileSize = new RealFile("c:/Recovery.txt").getSize();
-		long javaFileSize = new java.io.File("c:/Recovery.txt").length();
+		
+		
+		long realFileSize = new RealFile(testPath +"/TestFileWc.txt").getSize();
+		long javaFileSize = new java.io.File(testPath +"/TestFileWc.txt").length();
 		assertEquals(realFileSize, javaFileSize);
 	
 	}
