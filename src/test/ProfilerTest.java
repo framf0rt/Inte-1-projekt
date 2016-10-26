@@ -29,7 +29,7 @@ public class ProfilerTest {
 		GZip gzip = new GZip();
 		File file = new File("C:/Users/Anders/Documents/GitHub/Inte-1-projekt/Testfile.txt");
 		gzip.gZipFile(file);
-		System.out.println("Leet");
+		
 
 	}
 

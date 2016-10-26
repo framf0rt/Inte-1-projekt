@@ -56,7 +56,7 @@ public class Diff {
 		if (filesText.get(FILE1).size() != filesText.get(FILE2).size()) {
 			return false;
 		}
-
+		identicalLines(false);
 		if (identicalLines.size() != filesText.get(FILE1).size()) {
 			return false;
 		}
