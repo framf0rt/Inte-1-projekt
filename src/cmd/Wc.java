@@ -1,8 +1,8 @@
-package inte;
+package cmd;
 
 import java.util.ArrayList;
 
-import TestaInte.*;
+import fileSystemObjects.*;
 
 public class Wc {
 	private ArrayList<String> fileText;
@@ -23,20 +23,23 @@ public class Wc {
 	}
 	
 	public long getNumberOfCharacters(){
-		long characters = 0;
+		long numberOfCharacters = 0;
 		for(String line: fileText){
-			characters+= line.length();
+			numberOfCharacters+= line.length();
 		}
-		return characters;
+		return numberOfCharacters;
 		
 	}
 	
-	public long getAmountOfWords(){
-		long words = 0;
+	public long getNumberOfWords(){
+		long numberOfWords = 0;
 		for(String line: fileText){
-			words += line.trim().split("\\s+").length;
+			numberOfWords += line.trim().split("\\s+").length;
 		}
-		return words;
+		return numberOfWords;
+	}
+	public ArrayList<String> getFileText(){
+		return fileText;
 	}
 
 }

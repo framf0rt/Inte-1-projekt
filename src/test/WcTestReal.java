@@ -3,12 +3,14 @@ package test;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import TestaInte.*;
+
+import cmd.*;
+import fileSystemObjects.*;
+
 import org.junit.Test;
-import inte.*;
 
 public class WcTestReal {
-	private WcForTest wc;
+	private Wc wc;
 	private final String testPath = new GetFile().getTestPath();
 	
 	
@@ -16,26 +18,26 @@ public class WcTestReal {
 	
 	@Test
 	public void getString() {
-		wc = new WcForTest(new RealFile(testPath +"/TestfileWc.txt"));
+		wc = new Wc(new RealFile(testPath +"/TestfileWc.txt"));
 		ArrayList<String> temp = new ArrayList<>();
 		temp.add("Hej ");
 		temp.add("hej hopp");
 		temp.add("tjollahopp");
-		assertEquals(temp, wc.getTxt());
+		assertEquals(temp, wc.getFileText());
 	}
 	
 	@Test(expected = FileNameInvalidException.class)
 	public void noneTxtFileTest(){
-		new WcForTest(new RealFile(testPath +"/scifi.jpg"));	
+		new Wc(new RealFile(testPath +"/scifi.jpg"));	
 	}
 	@Test
 	public void getNumberOfLinesTest(){
-		wc = new WcForTest(new RealFile(testPath +"/TestfileWc.txt"));
+		wc = new Wc(new RealFile(testPath +"/TestfileWc.txt"));
 		assertEquals(3, wc.getNumberOfLines());
 	}
 	@Test
 	public void getNumberOfCharactersTest(){
-		wc = new WcForTest(new RealFile(testPath +"/TestfileWc.txt"));
+		wc = new Wc(new RealFile(testPath +"/TestfileWc.txt"));
 		assertEquals(22, wc.getNumberOfCharacters());
 	}
 

@@ -1,13 +1,14 @@
 package test;
 
 import org.junit.*;
-import inte.*;
+
+import cmd.*;
 
 import static org.junit.Assert.*;
 
 import java.io.File;
 
-public class GZip_Test {
+public class GZipTest {
 
 	
 	public File getTestFile() {

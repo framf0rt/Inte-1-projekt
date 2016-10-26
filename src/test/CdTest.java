@@ -1,14 +1,14 @@
 package test;
 
-import inte.*;
-
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 
 import org.junit.*;
 
-public class Cd_Test {
+import cmd.*;
+
+public class CdTest {
 	
 	private Cd cd = new Cd();
 	

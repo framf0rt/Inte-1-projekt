@@ -1,4 +1,4 @@
-package inte;
+package cmd;
 
 public class FileDoesntExistException extends RuntimeException{
 	

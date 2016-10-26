@@ -1,4 +1,4 @@
-package inte;
+package cmd;
 
 public class FileNameInvalidException extends RuntimeException{
 	
