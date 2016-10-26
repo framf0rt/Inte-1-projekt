@@ -19,11 +19,8 @@ public class CopyFile {
 				dir = file.getParentFile().getAbsolutePath();
 		}
 		
-		String[] fileTypeSplit = file.getName().split("[.]");
-		String[] fileNameWithoutCopy = file.getName().split("_Copy_");
+		String[] fileTypeSplit = file.getName().split("[.]");		
 		
-		
-		String name = fileNameWithoutCopy[0];
 		String originalFileName = file.getName(); 
 		File copy = new File(file,originalFileName);
 	
