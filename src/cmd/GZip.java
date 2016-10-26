@@ -56,7 +56,7 @@ public class GZip {
 		if (name != null && name != "" && !name.contains(".") && !name.contains("/") && !name.contains("\\") && !name.contains(("\\s+"))) {
 			return;
 		} else {
-			throw new FileNameInvalidException("Is not a folder!");
+			throw new FileNameInvalidException("File name is invalid");
 		}
 	}
 

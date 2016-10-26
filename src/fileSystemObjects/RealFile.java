@@ -41,12 +41,13 @@ public class RealFile extends File {
 	public boolean isFile(){
 		return file.isFile();
 	}
+	
 	public java.io.File getFile(){
 		return file;
 	}
 	public ArrayList<String> getFileText(){
 		if(!file.getName().contains(".txt")){
-			throw new FileNameInvalidException("It's not a txt");
+			throw new FileNameInvalidException(file.getName() + " is not a txt file");
 		}
 		ArrayList<String> lines = new ArrayList<>();
 		String temp = null;

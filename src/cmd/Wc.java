@@ -13,11 +13,6 @@ public class Wc {
 		
 		
 	
-	protected Wc(){
-		
-	}
-
-	
 	public long getNumberOfLines(){
 		return fileText.size();
 	}

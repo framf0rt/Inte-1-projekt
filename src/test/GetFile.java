@@ -1,8 +1,9 @@
 package test;
 
-import static org.junit.Assert.assertFalse;
 
 import java.io.File;
+
+import cmd.FolderDoesntExistException;
 
 public class GetFile {
 	
@@ -13,7 +14,9 @@ public class GetFile {
 		while (!path.getName().equals("Inte-1-projekt") && path.getParent() != null) {
 			path = path.getParentFile();
 		}
-		assertFalse(path.getParent() == null);
+		if(path.getParent() == null){
+			throw new FolderDoesntExistException("Parent folder is null");
+		}
 		
 		return path.getAbsolutePath();
 	}
@@ -25,7 +28,9 @@ public class GetFile {
 		while (!path.getName().equals("Inte-1-projekt") && path.getParent() != null) {
 			path = path.getParentFile();
 		}
-		assertFalse(path.getParent() == null);
+		if(path.getParent() == null){
+			throw new FolderDoesntExistException("Parent folder is null");
+		}
 		File file = new File(path.getAbsolutePath() + "/Testfile.txt");
 		return file;
 	}
