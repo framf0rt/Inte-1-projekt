@@ -46,9 +46,9 @@ public class LsTest {
 	@Test
 	public void showFilesSizeTest(){
 		ArrayList<String> test = new ArrayList<>();
-		test.add("Directory: Directory1 Size: 0,00 Byte");
-		test.add("File: File1 Size: 50,00 Byte");
-		test.add("File: File2 Size: 100,00 Byte");
+		test.add(String.format("Directory: Directory1 Size: %.2f Byte", 0.0));
+		test.add(String.format("File: File1 Size: %.2f Byte", 50.0));
+		test.add(String.format("File: File2 Size: %.2f Byte", 100.0));
 		
 		outputTest.showContentSize(new SmallDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
@@ -57,9 +57,9 @@ public class LsTest {
 	@Test
 	public void showFilesSortedTest(){
 		ArrayList<String> test = new ArrayList<>();
-		test.add("Directory: Directory1 Size: 0,00 Byte");
-		test.add("File: File2 Size: 100,00 Byte");
-		test.add("File: File1 Size: 50,00 Byte");
+		test.add(String.format("Directory: Directory1 Size: %.2f Byte", 0.0));
+		test.add(String.format("File: File2 Size: %.2f Byte", 100.0));
+		test.add(String.format("File: File1 Size: %.2f Byte", 50.0));
 		outputTest.showContentSortedSize(new SmallDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
