@@ -6,11 +6,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import TestaInte.FakeFile;
+import cmd.Wc;
+import fileSystemObjects.FakeFile;
 
 
 public class WcTest {
-	private static final WcForTest wc = new WcForTest(new FakeFile(""));
+	private static final Wc wc = new Wc(new FakeFile(""));
 	
 
 	@Test
@@ -25,6 +26,6 @@ public class WcTest {
 	
 	@Test
 	public void getAmountOfWordsTest(){
-		assertEquals(7, wc.getAmountOfWords());
+		assertEquals(7, wc.getNumberOfWords());
 	}
 }
