@@ -64,13 +64,8 @@ public class CopyFile {
 	}
 
 	public boolean moveFile(File file, String path) {
-		File moveFile = copyFile(file.getAbsoluteFile(), path);
-		file.delete();
-		if (!file.exists()) {
-			return true;
-		} else {
-			return false;
-		}
+		copyFile(file.getAbsoluteFile(), path);
+		return file.delete();
 
 	}
 

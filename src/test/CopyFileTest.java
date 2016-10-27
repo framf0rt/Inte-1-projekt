@@ -29,6 +29,19 @@ public class CopyFileTest {
 		test.delete();
 	}
 	
+	@Test(expected = FileDoesntExistException.class)
+	public void copyFileNullFile(){
+		File file = new GetFile().getTestFile();
+		String path = file.getParentFile().getAbsolutePath();
+		new CopyFile().copyFile(null, path);
+	}
+	
+	@Test(expected = FolderDoesntExistException.class)
+	public void copyFilePathNotADirectory(){
+		File file = new GetFile().getTestFile();
+		new CopyFile().copyFile(file, file.getAbsolutePath());
+	}
+	
 	@Test
 	public void copyFileNewPathTest(){
 		CopyFile cf = new CopyFile();

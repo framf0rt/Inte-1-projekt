@@ -101,6 +101,16 @@ public class GZipTest {
 		gz.gZipFileToPath(file, currentDirectory.getAbsolutePath());
 
 	}
+	
+	@Test(expected = FileDoesntExistException.class)
+	public void gZipPathIsNotADirectory(){
+		GZip gz = new GZip();
+		File file = getTestFile();
+		File gzFile = gz.gZipFileToPath(file, file.getAbsolutePath());
+		assertTrue(gzFile.exists());
+		gzFile.delete();
+		assertFalse(gzFile.exists());
+	}
 
 	@Test(expected = FileNameInvalidException.class)
 	public void gZip_NewPathNewName_NameInvalid_Test() {
