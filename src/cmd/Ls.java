@@ -33,9 +33,7 @@ public class Ls {
 	}
 
 	public String formattedSize(long size) {
-		System.out.println(size);
 		double sizeDouble = size;
-		System.out.println(sizeDouble);
 		int i = 0;
 
 		while (sizeDouble > 1024) {
