@@ -11,23 +11,10 @@ import static org.junit.Assert.*;
 
 public class CopyFileTest {
 	
-	public File CreateFile()
-	{
-		File path = new File(getClass().getClassLoader().getResource("").getPath());
-
-		while (!path.getName().equals("Inte-1-projekt") && path.getParent() != null) {
-			path = path.getParentFile();
-		}
-		assertFalse(path.getParent() == null);
-
-		File file = new File(path.getAbsolutePath() + "/Testfile.txt");
-		return file;
-	}
-	
 	@Test
 	public void copyFileTest(){
 		CopyFile cf = new CopyFile();
-		File file = CreateFile();
+		File file = new GetFile().getTestFile();
 		try
 		{
 			file.createNewFile();
@@ -45,7 +32,7 @@ public class CopyFileTest {
 	@Test
 	public void copyFileNewPathTest(){
 		CopyFile cf = new CopyFile();
-		File file = CreateFile();
+		File file = new GetFile().getTestFile();
 		
 		try
 		{
@@ -64,7 +51,7 @@ public class CopyFileTest {
 	@Test
 	public void moveFileTest(){
 		CopyFile cf = new CopyFile();
-		File file = new File(CreateFile().getParentFile(),"moveTest.txt");
+		File file = new File(new GetFile().getTestFile().getParentFile(),"moveTest.txt");
 		try
 		{
 			file.createNewFile();
