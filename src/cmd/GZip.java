@@ -51,7 +51,8 @@ public class GZip {
 	}
 
 	public void checkNameValid(String name) {
-		if (name != null && !name.equals("") && !name.contains(".") && !name.contains("/") && !name.contains("\\")
+		if (name != null && !
+				name.equals("") && !name.contains(".") && !name.contains("/") && !name.contains("\\")
 				&& !name.contains(("\\s+"))) {
 			return;
 		} else {
