@@ -11,7 +11,7 @@ public class FakeDirectoryTest {
 	@Test
 	public void getFakeSizeTest() {
 		SmallDirectory sd = new SmallDirectory("small");
-		assertEquals(150, sd.getSize());
+		assertEquals(110058641868800L, sd.getSize());
 	}
 
 }
