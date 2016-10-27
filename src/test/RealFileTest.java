@@ -15,6 +15,21 @@ public class RealFileTest {
 		new RealFile(getClass().getClassLoader().getResource("").getPath());
 	}
 	
+	@Test
+	public void isFileTest(){
+		assertTrue(new RealFile(testPath + "/Testfile.txt").isFile());
+	}
+	
+	@Test
+	public void isDirectoryTest(){
+		assertFalse(new RealFile(testPath + "/Testfile.txt").isDirectory());
+	}
+	
+	@Test
+	public void getFileTest(){
+		assertEquals(new java.io.File(testPath + "/Testfile.txt"), new RealFile(testPath + "/Testfile.txt").getFile());
+	}
+	
 	@Test(expected = FileDoesntExistException.class)
 	public void illegalPathTest(){
 		new RealFile("illegalpath");

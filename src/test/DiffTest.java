@@ -36,7 +36,7 @@ public class DiffTest {
 	
 	@Test
 	public void identicalFileTest(){
-		dft = new DiffOutput(new RealFile(testPath +"/compareFile2.txt"), new RealFile(testPath + "/compareFile.txt"));
+		dft = new DiffOutput(new RealFile(testPath + "/compareFile2.txt"), new RealFile(testPath + "/compareFile.txt"));
 		assertTrue(dft.identicalFiles());
 		
 	}
