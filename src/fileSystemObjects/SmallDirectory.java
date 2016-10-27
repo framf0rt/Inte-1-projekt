@@ -9,8 +9,9 @@ public class SmallDirectory extends Directory {
 //		content[2] = new FakeFile("File2", 100);
 		
 	}
-
-	private final FSO[] content = {new EmptyDirectory("Directory1"), new FakeFile("File1",50), new FakeFile("File2", 100)};
+	private Long GB = 100L*1024L*1024L*1024L;
+	private Long TB = 100L*1024L*1024L*1024L*1024L;
+	private final FSO[] content = {new EmptyDirectory("Directory1"), new FakeFile("File1",50*1024), new FakeFile("File2", 100*1024*1024), new FakeFile("File3", GB), new FakeFile("File4", TB)};
 	
 	@Override
 	public FSO[] getContent() {

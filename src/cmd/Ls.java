@@ -33,12 +33,15 @@ public class Ls {
 	}
 
 	public String formattedSize(long size) {
+		System.out.println(size);
 		double sizeDouble = size;
+		System.out.println(sizeDouble);
 		int i = 0;
 
 		while (sizeDouble > 1024) {
 			i++;
 			sizeDouble /= 1024;
+
 		}
 		String prefix = "";
 		switch (i) {
@@ -54,11 +57,9 @@ public class Ls {
 		case 3:
 			prefix = "GB";
 			break;
-		case 4:
-			prefix = "TB";
-			break;
+		
 		default:
-			prefix = "PB";
+			prefix = "TB";
 			break;
 		}
 		return String.format("%.2f %s", sizeDouble, prefix);
