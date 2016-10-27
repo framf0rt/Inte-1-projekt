@@ -43,18 +43,18 @@ public class EkvivalensklassTest {
 
 	@Test
 	public void showFilesSizeTest() {
-		test.add("Directory: Directory1 Size: 0");
-		test.add("File: File1 Size: 50");
-		test.add("File: File2 Size: 100");
+		test.add("Directory: Directory1 Size: 0,00 Byte");
+		test.add("File: File1 Size: 50,00 Byte");
+		test.add("File: File2 Size: 100,00 Byte");
 		outputTest.showContentSize(new SmallDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
 
 	@Test
 	public void showFilesSortedTest() {
-		test.add("Directory: Directory1 Size: 0");
-		test.add("File: File2 Size: 100");
-		test.add("File: File1 Size: 50");
+		test.add("Directory: Directory1 Size: 0,00 Byte");
+		test.add("File: File2 Size: 100,00 Byte");
+		test.add("File: File1 Size: 50,00 Byte");
 		outputTest.showContentSortedSize(new SmallDirectory("TestName"));
 		assertEquals(test, outputTest.showFilesOutput);
 	}
