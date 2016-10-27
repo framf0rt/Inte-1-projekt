@@ -15,7 +15,7 @@ public class LsOutput extends Ls{
 	@Override
 	protected void showDirectory(FSO dir, boolean showSize){
 		if(showSize){
-			showFilesOutput.add("Directory: " + dir.getName() + " Size: " + dir.getSize());
+			showFilesOutput.add("Directory: " + dir.getName() + " Size: " + formattedSize(dir.getSize()));
 		}else{
 			showFilesOutput.add("Directory: " + dir.getName());
 		}
@@ -23,7 +23,7 @@ public class LsOutput extends Ls{
 	@Override
 	protected void showFile(FSO file, boolean showSize){
 		if(showSize){
-			showFilesOutput.add("File: " + file.getName() + " Size: " + file.getSize());
+			showFilesOutput.add("File: " + file.getName() + " Size: " + formattedSize(file.getSize()));
 		}else{
 			showFilesOutput.add("File: " + file.getName());
 		}
