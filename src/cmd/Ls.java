@@ -39,6 +39,7 @@ public class Ls {
 		while (sizeDouble > 1024) {
 			i++;
 			sizeDouble /= 1024;
+
 		}
 		String prefix = "";
 		switch (i) {
@@ -54,11 +55,9 @@ public class Ls {
 		case 3:
 			prefix = "GB";
 			break;
-		case 4:
-			prefix = "TB";
-			break;
+		
 		default:
-			prefix = "PB";
+			prefix = "TB";
 			break;
 		}
 		return String.format("%.2f %s", sizeDouble, prefix);
