@@ -1,23 +1,19 @@
 package test;
 
 import org.junit.*;
-import inte.*;
+
+import cmd.*;
 
 import static org.junit.Assert.*;
 
 import java.io.File;
 
-public class GZip_Test {
+public class GZipTest {
 
+	
 	public File getTestFile() {
-		File path = new File(getClass().getClassLoader().getResource("").getPath());
-
-		while (!path.getName().equals("Inte-1-projekt") && path.getParent() != null) {
-			path = path.getParentFile();
-		}
-		assertFalse(path.getParent() == null);
-		File file = new File(path.getAbsolutePath() + "/FileforGZip.txt");
-		return file;
+		GetFile getFile = new GetFile();
+		return getFile.getTestFile();
 	}
 
 	@Test
@@ -30,7 +26,7 @@ public class GZip_Test {
 
 	}
 
-	@Test(expected = FileDoesntExistsException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void gZip_FileDoesntExist_Test() {
 		File file = new File("1.txt");
 		GZip gz = new GZip();
@@ -53,7 +49,7 @@ public class GZip_Test {
 
 	}
 
-	@Test(expected = FileDoesntExistsException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void gZipNewPath_FileDoesntExist_Test() {
 		File file = new File("2.txt");
 		GZip gz = new GZip();
@@ -63,7 +59,7 @@ public class GZip_Test {
 
 	}
 
-	@Test(expected = FileDoesntExistsException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void gZipNewPath_PathDoesntExist_Test() {
 		File file = new File("3.txt");
 		GZip gz = new GZip();
@@ -86,7 +82,7 @@ public class GZip_Test {
 		assertFalse(gzFile.exists());
 	}
 
-	@Test(expected = FileDoesntExistsException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void gZip_NewPathNewName_PathDoesntExist_Test() {
 		File file = new File("4.txt");
 		GZip gz = new GZip();
@@ -96,7 +92,7 @@ public class GZip_Test {
 
 	}
 
-	@Test(expected = FileDoesntExistsException.class)
+	@Test(expected = FileDoesntExistException.class)
 	public void gZip_NewPathNewName_FileDoesntExist_Test() {
 		File file = new File("5.txt");
 		GZip gz = new GZip();

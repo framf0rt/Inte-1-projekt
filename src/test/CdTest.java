@@ -1,14 +1,14 @@
 package test;
 
-import inte.*;
-
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 
 import org.junit.*;
 
-public class Cd_Test {
+import cmd.*;
+
+public class CdTest {
 	
 	private Cd cd = new Cd();
 	
@@ -44,13 +44,13 @@ public class Cd_Test {
 		
 	}
 	
-	@Test (expected=FolderDoesntExistsException.class)
+	@Test (expected=FolderDoesntExistException.class)
 	public void cdDirectoryChangePath_DirectoryFalse_Test(){
 		String target ="D:\\Inte_Pro";
 		cd.cdDirectoryChangePath(target);
 	}
 	
-	@Test (expected=FolderDoesntExistsException.class)
+	@Test (expected=FolderDoesntExistException.class)
 	public void cdDirectoryChangePath_IsFile_Test(){
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		String target ="D:\\Inte_Projekt\\README.md";

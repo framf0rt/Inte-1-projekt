@@ -1,18 +1,18 @@
-package TestaInte;
+package fileSystemObjects;
 
 import java.util.ArrayList;
 
-public class FakeFile extends File {
+public class FakeTextFile extends File {
 
 	private long size;
 	private ArrayList<String> text = new ArrayList<>();
 	
-	public FakeFile(String name) {
+	public FakeTextFile(String name) {
 		this(name, 100);
 		
 	}
 
-	public FakeFile(String name, long size) {
+	public FakeTextFile(String name, long size) {
 		super(name);
 		this.size=size;
 		text.add("hej	");
@@ -24,7 +24,7 @@ public class FakeFile extends File {
 	}
 
 	@Override
-	public long getSize() {		// TODO Auto-generated method stub
+	public long getSize() {		
 		return size;
 	}
 

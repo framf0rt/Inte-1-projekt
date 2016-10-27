@@ -1,4 +1,4 @@
-package inte;
+package cmd;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,10 +9,16 @@ public class CopyFile {
 	
 	int i = 0;
 	public File copyFile(File file, String dir){
-		if(dir == null)
+		
+		if(file == null || file.exists() != true)
+		{
+			throw new FileDoesntExistException("file doesnt exist"); 
+		}
+		else if(dir == null || dir == "")
 		{
 			dir = file.getParentFile().getAbsolutePath();
 		}
+		
 		String[] fileTypeSplit = file.getName().split("[.]");
 		String[] strings = file.getName().split("_Copy_");
 		
@@ -23,6 +29,12 @@ public class CopyFile {
 	
 		NameFileFilter filter = new NameFileFilter(fileTypeSplit[0]);
 		File dirFile = new File(dir);
+		
+		if(!dirFile.isDirectory())
+		{
+			throw new FolderDoesntExistException("Folder doesnt exist");
+		}
+		
 		filter.accept(dirFile,fileTypeSplit[0]);
 		for(int j =0;j< dirFile.listFiles(filter).length;j++)
 		{

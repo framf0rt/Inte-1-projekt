@@ -1,9 +1,10 @@
-package TestaInte;
+package fileSystemObjects;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import inte.FileNameInvalidException;
+import cmd.FileDoesntExistException;
+import cmd.FileNameInvalidException;
 
 
 
@@ -17,7 +18,7 @@ public class RealFile extends File {
 		}
 		file = new java.io.File(absolutePath);
 		if(!file.isFile()){
-			throw new IllegalFilePathException("it's not a file");
+			throw new FileDoesntExistException("it's not a file");
 		}
 		setName(file.getName());
 		

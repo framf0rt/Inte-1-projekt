@@ -1,4 +1,4 @@
-package inte;
+package cmd;
 
 import java.io.File;
 
@@ -26,7 +26,7 @@ public class Cd {
 			currentDirectoryString = currentDirectory.getAbsolutePath();
 			return currentDirectoryString;
 		}
-		throw new FolderDoesntExistsException("Wrong path"); // Kastas om directory in existerar
+		throw new FolderDoesntExistException("Wrong path"); // Kastas om directory in existerar
 		// return currentDirectory.toString();
 	}
 
@@ -39,7 +39,7 @@ public class Cd {
 			currentDirectoryString = currentDirectory.getAbsolutePath();
 			return currentDirectoryString;
 		}
-		throw new FolderDoesntExistsException("Wrong path"); // Kastas om directory in existerar
+		throw new FolderDoesntExistException("Wrong path"); // Kastas om directory in existerar
 		// return currentDirectory.toString();
 	}
 
