@@ -12,7 +12,7 @@ public class Command {
 
 	public Command() {
 		scanner = new Scanner(System.in);
-		path = new GetFile().getTestPath(); // ÄNDRA
+		path = getClass().getClassLoader().getResource("").getPath();
 	}
 
 	public static void main(String[] args) {
@@ -46,8 +46,7 @@ public class Command {
 	}
 	
 	public String readCommand(){
-		String s = scanner.nextLine();
-		return s;
+		return scanner.nextLine();
 	}
 	
 	public void helpText(){

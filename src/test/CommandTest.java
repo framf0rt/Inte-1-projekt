@@ -21,21 +21,18 @@ public class CommandTest {
 
 	@Test
 	public void normalizeNullTest() {
-
 		testString = c.normalize(null);
 		assertTrue(testString.equals(""));
 	}
 
 	@Test
 	public void normalizeTest() {
-
 		testString = c.normalize("     Hej hOpP     ");
 		assertTrue(testString.equals("hej hopp"));
 	}
 
 	@Test
 	public void splitCommandTest() {
-
 		testString = c.normalize("     Hej 	  		        hOpP     ");
 		ArrayList<String> command = c.splitCommand(testString);
 		ArrayList<String> correctList = new ArrayList<>();
