@@ -22,10 +22,10 @@
 <!--  Skapar mappen build/jar och bygger ihop en jar fil av alla klasser -->
     <target name="jar" depends="compile">
         <mkdir dir="build/jar"/>
-        <jar destfile="build/jar/CommandPrompt.jar" basedir="${build.dir}"  excludes="**/*Test.class">
+        <jar destfile="build/jar/Command.jar" basedir="${build.dir}"  excludes="**/*Test.class">
 <!--  Skapar en manifest filen som pekar ut Main klassen-->
             <manifest>
-                <attribute name="Main-Class" value="cmd.CommandPrompt"/>
+                <attribute name="Main-Class" value="cmd.Command"/>
             </manifest>
         </jar>
     </target>
@@ -33,7 +33,7 @@
 	 
 <!--  Kör jar filen-->
     <target name="run" depends="jar">
-        <java jar="build/jar/CommandPrompt.jar" fork="true"/>
+        <java jar="build/jar/Command.jar" fork="true"/>
     </target>
 
 	
