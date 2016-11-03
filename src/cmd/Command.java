@@ -1,5 +1,8 @@
 package cmd;
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -8,11 +11,18 @@ import test.*;
 public class Command {
 	
 	private Scanner scanner;
-	private String path;
+	URL url =	Command.class.getProtectionDomain().getCodeSource().getLocation();
+	File jarPath;
+	//private String path;
 
 	public Command() {
 		scanner = new Scanner(System.in);
-		path = getClass().getClassLoader().getResource("").getPath();
+		//path = getClass().getClassLoader().getResource("").getPath();
+		try {
+			jarPath = new File(url.toURI());
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {
@@ -24,7 +34,7 @@ public class Command {
 	public void run(){
 		helpText();
 		do{
-			System.out.print(path + ">");
+			System.out.print(jarPath.getPath() + ">");
 			String s = readCommand();
 			System.out.println();
 			s = normalize(s);
