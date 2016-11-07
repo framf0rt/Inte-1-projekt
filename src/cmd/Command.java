@@ -11,17 +11,15 @@ import fileSystemObjects.RealDirectory;
 import test.*;
 
 public class Command {
-	
+
 	private Scanner scanner;
-	private URL url =	Command.class.getProtectionDomain().getCodeSource().getLocation();
-	private File jarPath;
-	//private String path;
+	private File fileLocation;
 
 	public Command() {
 		scanner = new Scanner(System.in);
-		//path = getClass().getClassLoader().getResource("").getPath();
+		URL url = Command.class.getProtectionDomain().getCodeSource().getLocation();
 		try {
-			jarPath = new File(url.toURI());
+			fileLocation = new File(url.toURI());
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
@@ -32,59 +30,60 @@ public class Command {
 		Command cmd = new Command();
 		cmd.run();
 	}
-	
-	public void run(){
+
+	public void run() {
 		helpText();
-		do{
-			System.out.print(jarPath.getPath() + ">");
+		do {
+			System.out.print(fileLocation.getPath() + ">");
 			String s = readCommand();
 			System.out.println();
 			s = normalize(s);
 			ArrayList<String> command = splitCommand(s);
 			commandInterpret(command);
-		}while(true);	
-	}
-	
-	public ArrayList<String> splitCommand(String s) {
-		String[] strings = s.split("\\s+");
-		return new ArrayList<String>(Arrays.asList(strings));      	
+		} while (true);
 	}
 
-	public String normalize(String s){
-		if(s == null){
+	public ArrayList<String> splitCommand(String s) {
+		String[] strings = s.split("\\s+");
+		return new ArrayList<String>(Arrays.asList(strings));
+	}
+
+	public String normalize(String s) {
+		if (s == null) {
 			return "";
 		}
 		return s.toLowerCase().trim();
 	}
-	
-	public String readCommand(){
+
+	public String readCommand() {
 		return scanner.nextLine();
 	}
-	
-	public void helpText(){
+
+	public void helpText() {
 		System.out.println("For available commands type \"help\"");
 	}
-	
-	public void availableCommands(){
+
+	public void availableCommands() {
 		System.out.println("Each command has specific help, type command followed by help");
 		System.out.println("LS");
+		System.out.println("CD");
 		System.out.println("Help");
 		System.out.println("Quit");
 	}
-	
+
 	public void commandInterpret(ArrayList<String> command) {
-		
+
 		switch (command.get(0)) {
 		case "ls":
-			RealDirectory dir = new RealDirectory(jarPath.getPath());
+			RealDirectory dir = new RealDirectory(fileLocation.getPath());
 			new Ls().commandHandler(command, dir);
 			break;
 		case "cd":
-		File cdChange =new File( new Cd().commandHandler(command, jarPath.getPath()));
-		if(cdChange.equals("")){
-			return;
-		}
-		jarPath = cdChange;
+			File cdChange = new File(new Cd().commandHandler(command, fileLocation.getPath()));
+			if (cdChange.getPath().equals("")) {
+				return;
+			}
+			fileLocation = cdChange;
 			break;
 		case "quit":
 			quit();
@@ -95,8 +94,8 @@ public class Command {
 			break;
 		}
 	}
-	
-	public void quit(){
+
+	public void quit() {
 		System.exit(0);
 	}
 }
