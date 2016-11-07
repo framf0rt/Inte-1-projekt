@@ -9,13 +9,17 @@ public class Cd {
 	private String currentDirectoryString = "";
 
 	public String commandHandler(ArrayList<String> commandList, String path) {
+		
+		if(commandList.contains("help")){
+			System.out.println("Commands available for cd: \"cd ..\" take one step up. \"cd path\" and \"cd folder to go to\" ");
+			return "";
+		}
 
-		if (commandList.contains("cd") && commandList.contains("..")) {
-
+		if (commandList.contains("..")) {
 			return cdDirectoryUpwards(path);
 
 		}
-		if (commandList.contains("cd") && !commandList.contains("..") && commandList.get(1) != null) {
+		if (!commandList.contains("..") && commandList.get(1) != null) {
 			File targetPath = new File(commandList.get(1));
 			if (targetPath.getPath().contains("/") || targetPath.getPath().contains("\\")) { // MÅSTE HANTERA EXCEPTION!
 				return cdDirectoryChangePath(targetPath.getPath());
@@ -26,7 +30,7 @@ public class Cd {
 			}
 
 		}
-
+		System.out.println("Wrong command for cd, for help write \"cd help\"");
 		return "";
 	}
 
