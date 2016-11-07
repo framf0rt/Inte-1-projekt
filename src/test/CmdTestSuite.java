@@ -22,7 +22,8 @@ public class CmdTestSuite {
 	   RealDirectoryTest.class,
 	   RealFileTest.class,
 	   WcTest.class,
-	   WcTestReal.class
+	   WcTestReal.class,
+	   CommandTest.class
 	})
 
 	public class JunitTestSuite {   

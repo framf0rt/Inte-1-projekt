@@ -1,18 +1,30 @@
 package cmd;
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import fileSystemObjects.RealDirectory;
 import test.*;
 
 public class Command {
 	
 	private Scanner scanner;
-	private String path;
+	private URL url =	Command.class.getProtectionDomain().getCodeSource().getLocation();
+	private File jarPath;
+	//private String path;
 
 	public Command() {
 		scanner = new Scanner(System.in);
-		path = getClass().getClassLoader().getResource("").getPath();
+		//path = getClass().getClassLoader().getResource("").getPath();
+		try {
+			jarPath = new File(url.toURI());
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {
@@ -24,7 +36,7 @@ public class Command {
 	public void run(){
 		helpText();
 		do{
-			System.out.print(path + ">");
+			System.out.print(jarPath.getPath() + ">");
 			String s = readCommand();
 			System.out.println();
 			s = normalize(s);
@@ -61,15 +73,23 @@ public class Command {
 	}
 	
 	public void commandInterpret(ArrayList<String> command) {
-
+		
 		switch (command.get(0)) {
+		case "ls":
+			RealDirectory dir = new RealDirectory(jarPath.getPath());
+			new Ls().commandHandler(command, dir);
+			break;
+		case "cd":
+		File cdChange =new File( new Cd().commandHandler(command, jarPath.getPath()));
+		if(cdChange.equals("")){
+			return;
+		}
+		jarPath = cdChange;
+			break;
 		case "quit":
 			quit();
 			break;
 		case "help":
-			availableCommands();
-			break;
-		default:
 			System.out.println("Command doesn't exist!");
 			helpText();
 			break;
