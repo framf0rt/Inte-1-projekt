@@ -1,5 +1,6 @@
 package cmd;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import fileSystemObjects.*;
@@ -10,6 +11,28 @@ public class Ls {
 
 	public Ls() {
 		currentDirectory = getClass().getClassLoader().getResource("").getPath();
+	}
+
+	public void commandHandler(ArrayList<String> commandList, Directory dir) {
+
+		if (commandList.size() > 1) {
+
+			switch (commandList.get(1)) {
+			case "size":
+				showContentSize(dir);
+				break;
+			case "sorted":
+				showContentSortedSize(dir);
+				break;
+			default:
+				System.out.println("Unknown LS command, available LS commands: Ls, Ls size, Ls sorted");
+				break;
+			}
+
+		} else {
+			showContentWithoutSize(dir);
+		}
+
 	}
 
 	protected void showDirectory(FSO dir, boolean showSize) {
@@ -55,7 +78,7 @@ public class Ls {
 		case 3:
 			prefix = "GB";
 			break;
-		
+
 		default:
 			prefix = "TB";
 			break;

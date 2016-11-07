@@ -11,38 +11,38 @@ import cmd.*;
 public class CdTest {
 
 	private Cd cd = new Cd();
+	File currentDirectory = new File("");
 
 	@Before
 	public void cdSet() {
 		cd = new Cd();
+		currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 	}
 
 	@Test
 	public void cdDirectoryUpwardsTest() {
-		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
-		String currentDirectoryString = cd.cdDirectoryUpwards();
+		String currentDirectoryString = cd.cdDirectoryUpwards(currentDirectory.getPath());
 		String fileParent = currentDirectory.getParentFile().getAbsolutePath();
 		assertEquals(fileParent, currentDirectoryString);
 	}
 
 	@Test
 	public void cdGoToDirectoryShortTest() {
-		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
 		String currentDirectoryString = currentDirectory.getAbsolutePath();
-		cd.cdDirectoryUpwards(); // Måste ta ett steg upp för att säkerställa
-									// att Travis har en mapp under
+		String currentPath = cd.cdDirectoryUpwards(currentDirectory.getPath()); // Måste ta ett steg upp för att säkerställa	
+		// att Travis har en mapp under
 		String target = currentDirectory.getName();
-		String current = cd.cdDirectoryShortChangePath(target);
+		String current = cd.cdDirectoryShortChangePath(currentPath, target);
+
 		assertEquals(currentDirectoryString, current);
 	}
 
 	@Test(expected = FolderDoesntExistException.class)
 	public void cdGoToDirectoryShortFailTest() {
 		File currentDirectory = new File(getClass().getClassLoader().getResource("").getPath());
-		String currentDirectoryString = currentDirectory.getAbsolutePath();
-		cd.cdDirectoryUpwards();
+		cd.cdDirectoryUpwards(currentDirectory.getPath() + "");
 		String target = "FAIL";
-		String current = cd.cdDirectoryShortChangePath(target);
+		cd.cdDirectoryShortChangePath(currentDirectory.getPath(), target);
 	}
 
 	@Test

@@ -6,13 +6,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import fileSystemObjects.RealDirectory;
 import test.*;
 
 public class Command {
 	
 	private Scanner scanner;
-	URL url =	Command.class.getProtectionDomain().getCodeSource().getLocation();
-	File jarPath;
+	private URL url =	Command.class.getProtectionDomain().getCodeSource().getLocation();
+	private File jarPath;
 	//private String path;
 
 	public Command() {
@@ -71,15 +73,23 @@ public class Command {
 	}
 	
 	public void commandInterpret(ArrayList<String> command) {
-
+		
 		switch (command.get(0)) {
+		case "ls":
+			RealDirectory dir = new RealDirectory(jarPath.getPath());
+			new Ls().commandHandler(command, dir);
+			break;
+		case "cd":
+		File cdChange =new File( new Cd().commandHandler(command, jarPath.getPath()));
+		if(cdChange.equals("")){
+			return;
+		}
+		jarPath = cdChange;
+			break;
 		case "quit":
 			quit();
 			break;
 		case "help":
-			availableCommands();
-			break;
-		default:
 			System.out.println("Command doesn't exist!");
 			helpText();
 			break;
